@@ -61,14 +61,6 @@ const routes = [
                 },
                 component: () => import ( '../views/order/children/AddSalesOrder.vue')
             },
-               {
-                path: '/productSummary',
-                name: 'ProductSummary',
-                meta: {
-                    title: '新增销售订单'
-                },
-                component: () => import ( '../views/order/ProductSummary.vue')
-            },
         ]
     },
 ];

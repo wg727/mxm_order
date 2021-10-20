@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { computed,  } from "vue";
+import { computed, watch } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 export default {
@@ -66,10 +66,6 @@ export default {
                     {
                         index: "/salesOrder",
                         title: "销售订单",
-                    },
-                    {
-                        index: "/productSummary",
-                        title: "产品汇总",
                     },
                     
                     

@@ -83,47 +83,10 @@ export default {
   name: 'SalesOrder',
   data () {
     return {
-      queryInfo: {
-        // 搜索值
-        query: '',
-        // 当前的页数
-        pagenum: 1,
-        // 当前每次显示多少条数据
-        pagesize: 5
-      },
+      
 			total: 100,
       currentPage4: 10,
-      orderList: [
-        {
-          name: '天正电气塑壳断路器空气开关断路器空开塑壳DZ20Y系列',
-          orderNum: 10318,
-          deliver: 10317,
-          shipped: 0,
-          received: 1,
-        },
-        {
-          name: '天正电气塑壳断路器空气开关断路器空开塑壳DZ20Y系列',
-          orderNum: 10318,
-          deliver: 10317,
-          shipped: 0,
-          received: 1,
-        },
-        {
-          name: '天正电气塑壳断路器空气开关断路器空开塑壳DZ20Y系列',
-          orderNum: 10318,
-          deliver: 10317,
-          shipped: 0,
-          received: 1,
-        },
-        {
-          name: '天正电气塑壳断路器空气开关断路器空开塑壳DZ20Y系列',
-          orderNum: 10318,
-          deliver: 10317,
-          shipped: 0,
-          received: 1,
-        },
-        
-      ],
+      
       allOrderList:[
         {
           id:'ORD16539202110190001',

@@ -83,14 +83,7 @@ export default {
   name: 'SalesOrder',
   data () {
     return {
-      queryInfo: {
-        // 搜索值
-        query: '',
-        // 当前的页数
-        pagenum: 1,
-        // 当前每次显示多少条数据
-        pagesize: 5
-      },
+      
 			total: 100,
       currentPage4: 10,
       orderList: [

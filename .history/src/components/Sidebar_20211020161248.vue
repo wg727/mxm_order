@@ -68,8 +68,8 @@ export default {
                         title: "销售订单",
                     },
                     {
-                        index: "/productSummary",
-                        title: "产品汇总",
+                        index: "/salesOrder",
+                        title: "",
                     },
                     
                     

@@ -67,10 +67,6 @@ export default {
                         index: "/salesOrder",
                         title: "销售订单",
                     },
-                    {
-                        index: "/productSummary",
-                        title: "产品汇总",
-                    },
                     
                     
                 ],

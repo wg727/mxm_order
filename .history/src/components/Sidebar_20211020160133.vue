@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
         <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#324157"
-            text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
+            text-color="#bfcbd9" active-text-color="#20a0ff" router>
             <template v-for="item in items">
                 <template v-if="item.subs">
                     <el-submenu :index="item.index" :key="item.index">
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { computed,  } from "vue";
+import { computed, watch } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 export default {
@@ -66,10 +66,6 @@ export default {
                     {
                         index: "/salesOrder",
                         title: "销售订单",
-                    },
-                    {
-                        index: "/productSummary",
-                        title: "产品汇总",
                     },
                     
                     
