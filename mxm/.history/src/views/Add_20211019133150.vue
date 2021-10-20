@@ -1,0 +1,225 @@
+<template>
+	<div>
+		<div class="transheader">
+      <h2>新增调拨单</h2>
+      <div class="button">
+        <el-button size="small" plain  @click="$router.push('/transfer')"> 取消 </el-button>
+        <el-button size="small"  @click="save" type="danger"> 保存 </el-button>
+      </div>
+		</div>
+
+		<el-card>
+			<!-- 发货单信息 -->
+			<span>发货单信息</span>
+			<div class="a">
+			<el-row :gutter="20">
+				<el-col :span="12">
+						调入组织:<el-input placeholder="云镖网络科技有限公司" v-model="transOrganiza" :disabled="true"></el-input>
+				</el-col>
+				<el-col :span="12">
+					  资产所属组织:<br><el-select v-model="value" placeholder="请选择资产所属组织">
+											<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+  					</el-select>
+				</el-col>
+				<el-col :span="12" class="colPadding">
+						收货人:<el-input placeholder="请输入收货人" v-model="receiver" ></el-input>
+				</el-col>
+				<el-col :span="12" class="colPadding">
+						收货电话:<el-input placeholder="请输入收货电话" v-model="receivingPhone" ></el-input>
+				</el-col>
+
+				<el-col :span="12" class="colPadding">
+						<!-- 收货电话:<el-input placeholder="请选择省市区" v-model="receivingPhone" ></el-input> -->
+						<div>
+							省市区:<el-cascader v-model="city" :options="citys" @change="handleChange" placeholder="请选择省市区"></el-cascader>
+						</div>
+				</el-col>
+				<el-col :span="12" class="colPadding">
+					详细地址:<el-input placeholder="请输入详细收货地址" v-model="receivingPhone" ></el-input>
+				</el-col>
+
+				<!-- 》》》》》》时间选择器《《《《《《《《 -->
+				<el-col :span="12" class="colPadding">
+					期望发货日期：<br>
+					<el-date-picker class="eldatePicker" v-model="deliveryTime" align="right" type="date" placeholder="请选择期望发货日期" :picker-options="pickerOptions"> </el-date-picker>
+					
+				</el-col>
+				<!-- 》》》》》》收货场景《《《《《《《《《 -->
+				<el-col :span="12" class="colPadding">
+					  收货场景:<el-select v-model="value" placeholder="请选择收货场景">
+											<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+  					</el-select>
+				</el-col>
+				<!-- 》》》》》》备注《《《《《《《《《《《 -->
+				<el-col :span="24" class="colPadding">
+					备注:<el-input type="textarea" placeholder="请输入备注信息（不超200字）" v-model="addInfo.remark" maxlength="200" show-word-limit > </el-input>
+				</el-col>
+			</el-row>
+		</div>	
+
+		<!-- 产品明细行 -->
+		<div class="productLine">
+			<span>产品明细行</span>
+			<el-row class="row">
+        <el-table :data="proList" border style="width: 100%">
+          <el-table-column prop="name" label="序列"></el-table-column>
+          <el-table-column prop="applicationsNum" label="产品名称"></el-table-column>
+          <el-table-column prop="approvalsNum" label="规格" ></el-table-column>
+          <el-table-column prop="sentNum" label="单位" ></el-table-column>
+          <el-table-column prop="cancelNum" label="申请数量" ></el-table-column>
+          <el-table-column prop="cancellationsNum" label="操作" ></el-table-column>
+        </el-table>
+      </el-row>
+		</div>
+		</el-card>
+	</div>
+</template>
+
+<script>
+export default {
+	name:'Add',
+	data(){
+		return{
+			// 新增调拨单提交信息
+			addInfo:{
+				transOrganiza:'',  //调入组织
+				// assetsOrg:''    //资产所属组织
+				receiver:'',       //收货人
+				receivingPhone:'',  //收货电话
+				city:'',           //城市
+				deliveryTime:'',	 //发货日期
+				remark:'',				 //备注
+			},
+			options: [{         //资产所属组织
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+      value: '',
+
+			// 城市下拉选择数据
+			citys: [{
+          value: 'zhinan',
+          label: '指南',
+          children: [{
+            value: 'shejiyuanze',
+            label: '设计原则',
+            children: [{
+              value: 'yizhi',
+              label: '一致'
+            }, {
+              value: 'fankui',
+              label: '反馈'
+            }, {
+              value: 'xiaolv',
+              label: '效率'
+            }, {
+              value: 'kekong',
+              label: '可控'
+            }]
+          }, {
+            value: 'daohang',
+            label: '导航',
+            children: [{
+              value: 'cexiangdaohang',
+              label: '侧向导航'
+            }, {
+              value: 'dingbudaohang',
+              label: '顶部导航'
+            }]
+          }]
+			}],
+			//选择发货日期数据
+			pickerOptions: {
+          disabledDate(time) {
+            return time.getTime() > Date.now();
+          },
+          shortcuts: [{
+            text: '今天',
+            onClick(picker) {
+              picker.$emit('pick', new Date());
+            }
+          }, {
+            text: '昨天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24);
+              picker.$emit('pick', date);
+            }
+          }, {
+            text: '一周前',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', date);
+            }
+          }]
+      },
+
+			// 产品明细行列表数据
+			proList: [
+        {
+          index: '磁悬浮地球仪-无规格',
+          productName: 25,
+          specification: 25,
+          unit: 25,
+          cancelNum: 25,
+          cancellationsNum: 25
+        },
+			]
+		}
+	}
+}
+</script>
+
+<style scoped>
+.transheader {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+h2{
+	font-size: 15px;
+	font-weight: 400;
+}
+.button{
+    margin-left: auto;
+		font-size: 5px;
+}
+.a{
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: 1px solid rgb(240, 230, 230);
+}
+.a >>> .el-input > input{
+    height: 32px;
+		padding-right:600px;
+		margin-top: 5px;
+}
+.colPadding{
+	margin-top: 20px;
+}
+
+
+.eldatePicker{
+	width: 200px;
+}
+.productLine{
+	margin-top: 10px;
+	border: 1px solid rgb(240, 230, 230);
+}
+
+
+</style>
