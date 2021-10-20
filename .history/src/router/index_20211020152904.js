@@ -18,7 +18,7 @@ const routes = [
                     title: '综合调拨申请',
                     permission: true
                 },
-                component: () => import (  "../views/requisition/Transfer.vue")
+                component: () => import (  "../views/Transfer.vue")
             }, 
             {
                 path: "/add",
@@ -27,7 +27,7 @@ const routes = [
                     title: '综合调拨申请添加',
                     permission: true
                 },
-                component: () => import ( "../views/requisition/children/Add.vue")
+                component: () => import ( "../views/Add.vue")
             },
             {
                 path: '/prolist',
@@ -35,14 +35,14 @@ const routes = [
                 meta: {
                     title: '产品列表'
                 },
-                component: () => import ( '../views/requisition/Prolist.vue')
+                component: () => import ( '../views/Prolist.vue')
             }, {
                 path: '/reviewList',
                 name: 'review',
                 meta: {
                     title: '审核调拨单'
                 },
-                component: () => import ( '../views/requisition/ReviewList.vue')
+                component: () => import ( '../views/ReviewList.vue')
             },
             // ========================订单模块====================================
                {
@@ -69,5 +69,20 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes
 });
+
+// router.beforeEach((to, from, next) => {
+//     document.title = `${to.meta.title} | vue-manage-system`;
+//     const role = localStorage.getItem('ms_username');
+//     if (!role && to.path !== '/login') {
+//         next('/login');
+//     } else if (to.meta.permission) {
+//         // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
+//         role === 'admin'
+//             ? next()
+//             : next('/403');
+//     } else {
+//         next();
+//     }
+// });
 
 export default router;

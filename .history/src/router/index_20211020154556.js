@@ -27,7 +27,7 @@ const routes = [
                     title: '综合调拨申请添加',
                     permission: true
                 },
-                component: () => import ( "../views/requisition/children/Add.vue")
+                component: () => import ( "../views/Add.vue")
             },
             {
                 path: '/prolist',
@@ -42,7 +42,7 @@ const routes = [
                 meta: {
                     title: '审核调拨单'
                 },
-                component: () => import ( '../views/requisition/ReviewList.vue')
+                component: () => import ( '../views/ReviewList.vue')
             },
             // ========================订单模块====================================
                {

@@ -27,7 +27,7 @@ const routes = [
                     title: '综合调拨申请添加',
                     permission: true
                 },
-                component: () => import ( "../views/requisition/children/Add.vue")
+                component: () => import ( "../views/Add.vue")
             },
             {
                 path: '/prolist',
