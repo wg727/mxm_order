@@ -59,7 +59,7 @@ export default {
                 
                 {
                     icon: "el-icon-lx-home",
-                    index: "7",
+                    index: "6",
                     title: "供应链调拨",
                     subs: [
                         {
@@ -84,6 +84,10 @@ export default {
                         {
                             index: "/salesOrder",
                             title: "销售订单",
+                        },
+                        {
+                            index: "/adReplaceOrder",
+                            title: "广告资源置换订单",
                         },
                         {
                             index: "/productSummary",
