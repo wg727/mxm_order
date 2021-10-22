@@ -1,12 +1,27 @@
 <template>
     <div>
-        <h2>广告资源置换订单</h2>
-
         <!-- ==========================全部订单========================= -->
         <el-card class="allOrderList">
             <div class="transheader">
+                <div>
+                    <el-col>
+                        <el-dropdown trigger="click">
+                            <span class="el-dropdown-link"> 全部订单<i class="el-icon-arrow-down el-icon--right"></i> </span>
+                            <template #dropdown>
+                                <el-dropdown-menu>
+                                    <el-dropdown-item>全部订单</el-dropdown-item>
+                                    <el-dropdown-item>待审核</el-dropdown-item>
+                                    <el-dropdown-item>代发货</el-dropdown-item>
+                                    <el-dropdown-item>待客户收货</el-dropdown-item>
+                                    <el-dropdown-item>已完成</el-dropdown-item>
+                                    <el-dropdown-item>交易关闭</el-dropdown-item>
+                                </el-dropdown-menu>
+                            </template>
+                        </el-dropdown>
+                    </el-col>
+                </div>
                 <div class="button">
-                    <el-button size="small" icon="el-icon-plus" @click="addAdReplaceOrder"> 新增</el-button>
+                    <el-button size="small" icon="el-icon-plus" @click="addPurchaseOrder"> 新增</el-button>
                     <el-button size="small" icon="el-icon-lx-filter"> 筛选 </el-button>
                 </div>
             </div>
@@ -21,15 +36,16 @@
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="customer" label="客户"></el-table-column>
+
                     <el-table-column prop="orderTime" label="下单时间"></el-table-column>
-                    <el-table-column prop="orderAmount" label="订单金额(元)"></el-table-column>
-                    <el-table-column prop="sentNum" label="订单数量"></el-table-column>
-                    <el-table-column prop="sentedNum" label="待发货请数量"></el-table-column>
-                    <el-table-column prop="collectionStatus" label="已安装数量"></el-table-column>
+                    <el-table-column prop="customer" label="供应商"></el-table-column>
+                    <el-table-column prop="orderAmount" label="采购员"></el-table-column>
+                    <el-table-column prop="sentNum" label="待发数量/订单数量"></el-table-column>
+                    <el-table-column prop="sentedNum" label="已发数量/已申请数量"></el-table-column>
                     <el-table-column prop="orderStatus" label="订单状态"></el-table-column>
                     <el-table-column prop="nailingApproval" label="钉钉审批"></el-table-column>
-                    <el-table-column prop="reviewer" label="收款状态"></el-table-column>
+                    <el-table-column prop="reviewer" label="审核人"></el-table-column>
+                    <el-table-column prop="updateTime" label="最后更新时间"></el-table-column>
                 </el-table>
             </el-row>
             <section class="footerMessage">
@@ -103,10 +119,10 @@ export default {
                     orderTime: '2021-10-19 16:32:42',
                     customer: '深圳科卫机器人服务有限公司',
                     area: '华南大区',
-                    orderAmount: '	¥12.00',
+                    orderAmount: '彭帅渠道管理员',
                     sentNum: '	2/2',
                     sentedNum: '	0/0',
-                    orderStatus: '待发货',
+                    orderStatus: '待供应商审核',
                     collectionStatus: '待客户付款',
                     nailingApproval: '未启用',
                     reviewer: '超级管理员	',
@@ -118,10 +134,10 @@ export default {
                     orderTime: '2021-10-19 16:32:42',
                     customer: '深圳科卫机器人服务有限公司',
                     area: '华南大区',
-                    orderAmount: '	¥12.00',
+                    orderAmount: '彭帅渠道管理员',
                     sentNum: '	2/2',
                     sentedNum: '	0/0',
-                    orderStatus: '待发货',
+                    orderStatus: '待供应商审核',
                     collectionStatus: '待客户付款',
                     nailingApproval: '未启用',
                     reviewer: '超级管理员	',
@@ -133,10 +149,10 @@ export default {
                     orderTime: '2021-10-19 16:32:42',
                     customer: '深圳科卫机器人服务有限公司',
                     area: '华南大区',
-                    orderAmount: '	¥12.00',
+                    orderAmount: '彭帅渠道管理员',
                     sentNum: '	2/2',
                     sentedNum: '	0/0',
-                    orderStatus: '待发货',
+                    orderStatus: '待供应商审核',
                     collectionStatus: '待客户付款',
                     nailingApproval: '未启用',
                     reviewer: '超级管理员	',
@@ -148,10 +164,10 @@ export default {
                     orderTime: '2021-10-19 16:32:42',
                     customer: '深圳科卫机器人服务有限公司',
                     area: '华南大区',
-                    orderAmount: '	¥12.00',
+                    orderAmount: '超级管理员',
                     sentNum: '	2/2',
                     sentedNum: '	0/0',
-                    orderStatus: '待发货',
+                    orderStatus: '待供应商审核',
                     collectionStatus: '待客户付款',
                     nailingApproval: '未启用',
                     reviewer: '超级管理员	',
@@ -176,8 +192,8 @@ export default {
             this.$router.push('/add');
         },
         // 新增跳转的到新增销售订单页面
-        addAdReplaceOrder() {
-            this.$router.push('/adReplaceOrder/add');
+        addPurchaseOrder() {
+            this.$router.push('/purchaseOrder/add');
         }
     }
 };

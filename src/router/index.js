@@ -82,6 +82,46 @@ export default new Router({
                     },
                     component: () => import ( '../components/page/order/adReplaceOrder/index.vue')
                 },
+                {
+                    path: '/adReplaceOrder/add',
+                    name: 'addAdReplaceOrder',
+                    meta: {
+                        title: '新增广告资源置换订单'
+                    },
+                    component: () => import ( '../components/page/order/adReplaceOrder/add.vue')
+                },
+                {
+                    path: '/purchaseOrder',
+                    name: 'purchaseOrder',
+                    meta: {
+                        title: '采购订单'
+                    },
+                    component: () => import ( '../components/page/order/purchaseOrder/index.vue')
+                },
+                {
+                    path: '/purchaseOrder/add',
+                    name: 'addPurchaseOrder',
+                    meta: {
+                        title: '新增采购订单'
+                    },
+                    component: () => import ( '../components/page/order/purchaseOrder/add.vue')
+                },
+                {
+                    path: '/leaseOrder',
+                    name: 'leaseOrder',
+                    meta: {
+                        title: '租赁订单'
+                    },
+                    component: () => import ( '../components/page/order/leaseOrder/index.vue')
+                },
+                {
+                    path: '/leaseOrder/add',
+                    name: 'addLeaseOrder',
+                    meta: {
+                        title: '新增租赁订单'
+                    },
+                    component: () => import ( '../components/page/order/leaseOrder/add.vue')
+                },
                 
 
                 
