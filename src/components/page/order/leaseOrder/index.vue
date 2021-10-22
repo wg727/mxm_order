@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h2>广告资源置换订单</h2>
+        <h2>租赁订单管理</h2>
 
         <!-- ==========================全部订单========================= -->
         <el-card class="allOrderList">
             <div class="transheader">
                 <div class="button">
-                    <el-button size="small" icon="el-icon-plus" @click="addAdReplaceOrder"> 新增</el-button>
+                    <el-button size="small" icon="el-icon-plus" @click="addLeaseOrder"> 新增</el-button>
                     <el-button size="small" icon="el-icon-lx-filter"> 筛选 </el-button>
                 </div>
             </div>
@@ -21,21 +21,23 @@
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="customer" label="客户"></el-table-column>
+                    <el-table-column prop="code" label="订单编号"></el-table-column>
                     <el-table-column prop="orderTime" label="下单时间"></el-table-column>
+                    <el-table-column prop="customer" label="客户"></el-table-column>
                     <el-table-column prop="orderAmount" label="订单金额(元)"></el-table-column>
-                    <el-table-column prop="sentNum" label="订单数量"></el-table-column>
-                    <el-table-column prop="sentedNum" label="待发货请数量"></el-table-column>
-                    <el-table-column prop="collectionStatus" label="已安装数量"></el-table-column>
                     <el-table-column prop="orderStatus" label="订单状态"></el-table-column>
-                    <el-table-column prop="nailingApproval" label="钉钉审批"></el-table-column>
                     <el-table-column prop="reviewer" label="收款状态"></el-table-column>
+                    <el-table-column prop="type" label="订单类型"></el-table-column>
+                    <el-table-column prop="sentNum" label="审核人"></el-table-column>
+                    <el-table-column prop="sentedNum" label="合同签约公司"></el-table-column>
+                    <el-table-column prop="collectionStatus" label="发货组织"></el-table-column>
+                    <el-table-column prop="nailingApproval" label="最后更新时间"></el-table-column>
                 </el-table>
             </el-row>
             <section class="footerMessage">
-                <span>订单总数量: 25924</span>
-                <span>订单待发总数量: 22796</span>
-                <span>订单总金额:￥16119714148</span>
+                <!-- <span>订单总数量: 25924</span>
+                <span>订单待发总数量: 22796</span> -->
+                <span>订单总金额:￥0</span>
             </section>
 
             <!-- 分页 -->
@@ -98,66 +100,66 @@ export default {
                 }
             ],
             allOrderList: [
-                {
-                    id: 'ORD16539202110190001',
-                    orderTime: '2021-10-19 16:32:42',
-                    customer: '深圳科卫机器人服务有限公司',
-                    area: '华南大区',
-                    orderAmount: '	¥12.00',
-                    sentNum: '	2/2',
-                    sentedNum: '	0/0',
-                    orderStatus: '待发货',
-                    collectionStatus: '待客户付款',
-                    nailingApproval: '未启用',
-                    reviewer: '超级管理员	',
-                    expectedTime: '2021-10-25',
-                    updateTime: '2021-10-15 16:59:24'
-                },
-                {
-                    id: 'ORD16539202110190001',
-                    orderTime: '2021-10-19 16:32:42',
-                    customer: '深圳科卫机器人服务有限公司',
-                    area: '华南大区',
-                    orderAmount: '	¥12.00',
-                    sentNum: '	2/2',
-                    sentedNum: '	0/0',
-                    orderStatus: '待发货',
-                    collectionStatus: '待客户付款',
-                    nailingApproval: '未启用',
-                    reviewer: '超级管理员	',
-                    expectedTime: '2021-10-25',
-                    updateTime: '2021-10-15 16:59:24'
-                },
-                {
-                    id: 'ORD16539202110190001',
-                    orderTime: '2021-10-19 16:32:42',
-                    customer: '深圳科卫机器人服务有限公司',
-                    area: '华南大区',
-                    orderAmount: '	¥12.00',
-                    sentNum: '	2/2',
-                    sentedNum: '	0/0',
-                    orderStatus: '待发货',
-                    collectionStatus: '待客户付款',
-                    nailingApproval: '未启用',
-                    reviewer: '超级管理员	',
-                    expectedTime: '2021-10-25',
-                    updateTime: '2021-10-15 16:59:24'
-                },
-                {
-                    id: 'ORD16539202110190001',
-                    orderTime: '2021-10-19 16:32:42',
-                    customer: '深圳科卫机器人服务有限公司',
-                    area: '华南大区',
-                    orderAmount: '	¥12.00',
-                    sentNum: '	2/2',
-                    sentedNum: '	0/0',
-                    orderStatus: '待发货',
-                    collectionStatus: '待客户付款',
-                    nailingApproval: '未启用',
-                    reviewer: '超级管理员	',
-                    expectedTime: '2021-10-25',
-                    updateTime: '2021-10-15 16:59:24'
-                }
+                // {
+                //     id: 'ORD16539202110190001',
+                //     orderTime: '2021-10-19 16:32:42',
+                //     customer: '深圳科卫机器人服务有限公司',
+                //     area: '华南大区',
+                //     orderAmount: '	¥12.00',
+                //     sentNum: '	2/2',
+                //     sentedNum: '	0/0',
+                //     orderStatus: '待发货',
+                //     collectionStatus: '待客户付款',
+                //     nailingApproval: '未启用',
+                //     reviewer: '超级管理员	',
+                //     expectedTime: '2021-10-25',
+                //     updateTime: '2021-10-15 16:59:24'
+                // },
+                // {
+                //     id: 'ORD16539202110190001',
+                //     orderTime: '2021-10-19 16:32:42',
+                //     customer: '深圳科卫机器人服务有限公司',
+                //     area: '华南大区',
+                //     orderAmount: '	¥12.00',
+                //     sentNum: '	2/2',
+                //     sentedNum: '	0/0',
+                //     orderStatus: '待发货',
+                //     collectionStatus: '待客户付款',
+                //     nailingApproval: '未启用',
+                //     reviewer: '超级管理员	',
+                //     expectedTime: '2021-10-25',
+                //     updateTime: '2021-10-15 16:59:24'
+                // },
+                // {
+                //     id: 'ORD16539202110190001',
+                //     orderTime: '2021-10-19 16:32:42',
+                //     customer: '深圳科卫机器人服务有限公司',
+                //     area: '华南大区',
+                //     orderAmount: '	¥12.00',
+                //     sentNum: '	2/2',
+                //     sentedNum: '	0/0',
+                //     orderStatus: '待发货',
+                //     collectionStatus: '待客户付款',
+                //     nailingApproval: '未启用',
+                //     reviewer: '超级管理员	',
+                //     expectedTime: '2021-10-25',
+                //     updateTime: '2021-10-15 16:59:24'
+                // },
+                // {
+                //     id: 'ORD16539202110190001',
+                //     orderTime: '2021-10-19 16:32:42',
+                //     customer: '深圳科卫机器人服务有限公司',
+                //     area: '华南大区',
+                //     orderAmount: '	¥12.00',
+                //     sentNum: '	2/2',
+                //     sentedNum: '	0/0',
+                //     orderStatus: '待发货',
+                //     collectionStatus: '待客户付款',
+                //     nailingApproval: '未启用',
+                //     reviewer: '超级管理员	',
+                //     expectedTime: '2021-10-25',
+                //     updateTime: '2021-10-15 16:59:24'
+                // }
             ]
         };
     },
@@ -176,8 +178,8 @@ export default {
             this.$router.push('/add');
         },
         // 新增跳转的到新增销售订单页面
-        addAdReplaceOrder() {
-            this.$router.push('/adReplaceOrder/add');
+        addLeaseOrder() {
+            this.$router.push('/leaseOrder/add');
         }
     }
 };
