@@ -24,9 +24,10 @@ export default new Router({
                         permission: true
                     },
                     component: () => import (  "../components/page/requisition/Transfer/index.vue")
+                    
                 }, 
                 {
-                    path: "/add",
+                    path: "/transfer/add",
                     name: "Add",
                     meta: {
                         title: '综合调拨申请添加',
