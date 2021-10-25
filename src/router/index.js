@@ -123,6 +123,46 @@ export default new Router({
                     },
                     component: () => import ( '../components/page/order/leaseOrder/add.vue')
                 },
+                {
+                    path: '/purchaseDeliveryApply',
+                    name: 'purchaseDeliveryApply',
+                    meta: {
+                        title: '采购发货申请'
+                    },
+                    component: () => import ( '../components/page/order/purchaseDeliveryApply/index.vue')
+                },
+                {
+                    path: '/advertisementOrder',
+                    name: 'advertisementOrder',
+                    meta: {
+                        title: '新广告订单'
+                    },
+                    component: () => import ( '../components/page/order/advertisementOrder/index.vue')
+                },
+                {
+                    path: '/leaseExchange',
+                    name: 'leaseExchange',
+                    meta: {
+                        title: '租赁换货'
+                    },
+                    component: () => import ( '../components/page/order/leaseExchange/index.vue')
+                },
+                {
+                    path: '/returnOrder',
+                    name: 'returnOrder',
+                    meta: {
+                        title: '销售退换货'
+                    },
+                    component: () => import ( '../components/page/order/returnOrder/index.vue')
+                },
+                {
+                    path: '/deliveryApply',
+                    name: 'deliveryApply',
+                    meta: {
+                        title: '销售发货申请'
+                    },
+                    component: () => import ( '../components/page/order/deliveryApply/index.vue')
+                },
                 
 
                 

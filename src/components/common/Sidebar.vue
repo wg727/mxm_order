@@ -89,6 +89,26 @@ export default {
                         {
                             index: '/leaseOrder',
                             title: '租赁订单'
+                        },
+                        {
+                            index: '/purchaseDeliveryApply',
+                            title: '采购发货申请'
+                        },
+                        {
+                            index: '/advertisementOrder',
+                            title: '新广告订单'
+                        },
+                        {
+                            index: '/leaseExchange',
+                            title: '租赁换货'
+                        },
+                        {
+                            index: '/returnOrder',
+                            title: '销售退换货'
+                        },
+                        {
+                            index: '/deliveryApply',
+                            title: '销售发货申请'
                         }
                     ]
                 }
