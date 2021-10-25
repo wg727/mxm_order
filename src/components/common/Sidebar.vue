@@ -91,30 +91,45 @@ export default {
                             title: '租赁订单'
                         },
                         {
-                            index: "/conversionOrder",
-                            title: "转换订单",
+                            index: '/purchaseDeliveryApply',
+                            title: '采购发货申请'
                         },
                         {
-                            index: "/shipmentNum",
-                            title: "物流单号",
+                            index: '/advertisementOrder',
+                            title: '新广告订单'
                         },
                         {
-                            index: "/purchaseReturns",
-                            title: "采购退换货",
+                            index: '/leaseExchange',
+                            title: '租赁换货'
                         },
                         {
-                            index: "/salesreturnAddress",
-                            title: "销售退换货地址",
+                            index: '/returnOrder',
+                            title: '销售退换货'
                         },
-
+                        {
+                            index: '/deliveryApply',
+                            title: '销售发货申请'
+                        },
+                        {
+                            index: '/conversionOrder',
+                            title: '转换订单'
+                        },
+                        {
+                            index: '/shipmentNum',
+                            title: '物流单号'
+                        },
+                        {
+                            index: '/purchaseReturns',
+                            title: '采购退换货'
+                        },
+                        {
+                            index: '/salesreturnAddress',
+                            title: '销售退换货地址'
+                        }
                     ]
                 }
-
-            
-
-
             ]
-        }
+        };
     },
     computed: {
         onRoutes() {
