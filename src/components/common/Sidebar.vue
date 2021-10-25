@@ -109,6 +109,22 @@ export default {
                         {
                             index: '/deliveryApply',
                             title: '销售发货申请'
+                        },
+                        {
+                            index: '/conversionOrder',
+                            title: '转换订单'
+                        },
+                        {
+                            index: '/shipmentNum',
+                            title: '物流单号'
+                        },
+                        {
+                            index: '/purchaseReturns',
+                            title: '采购退换货'
+                        },
+                        {
+                            index: '/salesreturnAddress',
+                            title: '销售退换货地址'
                         }
                     ]
                 }

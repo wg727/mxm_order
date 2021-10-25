@@ -23,8 +23,7 @@ export default new Router({
                         title: '综合调拨申请',
                         permission: true
                     },
-                    component: () => import (  "../components/page/requisition/Transfer/index.vue")
-                    
+                    component: () => import (  "../components/page/requisition/Transfer/index.vue"),
                 }, 
                 {
                     path: "/transfer/add",
@@ -34,6 +33,15 @@ export default new Router({
                         permission: true
                     },
                     component: () => import ( "../components/page/requisition/Transfer/Add.vue")
+                },
+                {
+                    path: "/transfer/transferDetail",
+                    name: "TransferDetail",
+                    meta: {
+                        title: '综合调拨申请详情',
+                        permission: true
+                    },
+                    component: () => import ( "../components/page/requisition/Transfer/TransferDetail.vue")
                 },
                 {
                     path: '/prolist',
@@ -49,6 +57,14 @@ export default new Router({
                         title: '审核调拨单'
                     },
                     component: () => import ( '../components/page/requisition/ReviewList/index.vue')
+                },
+                , {
+                    path: '/reviewList/reviewListDetail',
+                    name: 'review',
+                    meta: {
+                        title: '审核调拨单详情'
+                    },
+                    component: () => import ( '../components/page/requisition/ReviewList/reviewListDetail.vue')
                 },
                 // ========================订单模块====================================
                 {
@@ -163,6 +179,39 @@ export default new Router({
                     },
                     component: () => import ( '../components/page/order/deliveryApply/index.vue')
                 },
+                {
+                    path: '/conversionOrder',
+                    name: 'conversionOrder',
+                    meta: {
+                        title: '转换订单'
+                    },
+                    component: () => import ( '../components/page/order/ConversionOrder/index.vue')
+                },
+                {
+                    path: '/shipmentNum',
+                    name: 'shipmentNum',
+                    meta: {
+                        title: '物流单号'
+                    },
+                    component: () => import ( '../components/page/order/shipmentNum/index.vue')
+                },
+                {
+                    path: '/purchaseReturns',
+                    name: 'purchaseReturns',
+                    meta: {
+                        title: '采购退换货'
+                    },
+                    component: () => import ( '../components/page/order/purchaseReturns/index.vue')
+                },
+                {
+                    path: '/salesreturnAddress',
+                    name: 'salesreturnAddress',
+                    meta: {
+                        title: '销售退换货地址'
+                    },
+                    component: () => import ( '../components/page/order/salesreturnAddress/index.vue')
+                },
+                
                 
 
                 
