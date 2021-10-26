@@ -44,6 +44,15 @@ export default new Router({
                     component: () => import ( "../components/page/requisition/Transfer/TransferDetail.vue")
                 },
                 {
+                    path: "/transfer/transferDetai/shipApplication",
+                    name: "shipApplication",
+                    meta: {
+                        title: '发货申请',
+                        permission: true
+                    },
+                    component: () => import ( "../components/page/requisition/Transfer/ShipApplication.vue")
+                },
+                {
                     path: '/prolist',
                     name: 'prolist',
                     meta: {
@@ -100,6 +109,7 @@ export default new Router({
                     component: () => import ( '../components/page/order/adReplaceOrder/index.vue')
                 },
                 {
+<<<<<<< Updated upstream
                     path: '/adReplaceOrder/add',
                     name: 'addAdReplaceOrder',
                     meta: {
@@ -180,6 +190,8 @@ export default new Router({
                     component: () => import ( '../components/page/order/deliveryApply/index.vue')
                 },
                 {
+=======
+>>>>>>> Stashed changes
                     path: '/conversionOrder',
                     name: 'conversionOrder',
                     meta: {

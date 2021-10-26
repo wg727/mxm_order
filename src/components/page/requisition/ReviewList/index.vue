@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="reviewheader">
+<<<<<<< Updated upstream
       <span class="detail_title">审核调拨单列表</span>
+=======
+      <span>审核调拨单列表</span>
+>>>>>>> Stashed changes
       <div class="button">
           <el-dropdown trigger="click" >
           <el-button class="el_dropdown" icon="el-icon-lx-filter" size="small">筛选</el-button>
@@ -71,7 +75,12 @@
         </el-table-column>
 
           <el-table-column prop="transferred" label="调入组织" ></el-table-column>
+<<<<<<< Updated upstream
           <el-table-column prop="productName" label="产品名称" ></el-table-column>
+=======
+          <el-table-column prop="sourceType" label="来源类型" ></el-table-column>
+          <el-table-column prop="sourceNum" label="来源编号" ></el-table-column>
+>>>>>>> Stashed changes
           <el-table-column prop="idleNum" label="闲置数量" ></el-table-column>
           <el-table-column prop="applications" label="申请数量" ></el-table-column>
           <el-table-column prop="sentNum" label="待发数量" ></el-table-column>
@@ -121,7 +130,60 @@ export default {
         {
           id: 'DB20211015000001',
           transferred: '云镖网络科技有限公司',
+<<<<<<< Updated upstream
           productName:'机器人',
+=======
+          sourceType: 'xyj店铺',
+          sourceNum: 'DMI调拨',
+          idleNum:20,
+          applications: '',
+          sentNum: '10',
+          cancelNum: 87,
+          cancellationsNum: 87,
+          state: '待收货',
+          applicant: '张三',
+          planner: '2021-10-15 10:35:23',
+          applicationime: '2021-10-15 10:35:23',
+          updateTime: '2021-10-15 10:35:23'
+        },
+        {
+          id: 'DB20211015000001',
+          transferred: '云镖网络科技有限公司',
+          sourceType: 'xyj店铺',
+          sourceNum: 'DMI调拨',
+          idleNum:20,
+          applications: '',
+          sentNum: '10',
+          cancelNum: 87,
+          cancellationsNum: 87,
+          state: '待收货',
+          applicant: '张三',
+          planner: '2021-10-15 10:35:23',
+          applicationime: '2021-10-15 10:35:23',
+          updateTime: '2021-10-15 10:35:23'
+        },
+        {
+          id: 'DB20211015000001',
+          transferred: '云镖网络科技有限公司',
+          sourceType: 'xyj店铺',
+          sourceNum: 'DMI调拨',
+          idleNum:20,
+          applications: '',
+          sentNum: '10',
+          cancelNum: 87,
+          cancellationsNum: 87,
+          state: '待收货',
+          applicant: '张三',
+          planner: '2021-10-15 10:35:23',
+          applicationime: '2021-10-15 10:35:23',
+          updateTime: '2021-10-15 10:35:23'
+        },
+        {
+          id: 'DB20211015000001',
+          transferred: '云镖网络科技有限公司',
+          sourceType: 'xyj店铺',
+          sourceNum: 'DMI调拨',
+>>>>>>> Stashed changes
           idleNum:20,
           applications: '',
           sentNum: '10',
@@ -135,9 +197,44 @@ export default {
           applicationime: '2021-10-15 10:35:23',
           updateTime: '2021-10-15 10:35:23'
         },
+<<<<<<< Updated upstream
         
 
       ],
+=======
+        {
+          id: 'DB20211015000001',
+          transferred: '云镖网络科技有限公司',
+          sourceType: 'xyj店铺',
+          sourceNum: 'DMI调拨',
+          idleNum:20,
+          applications: '',
+          sentNum: '10',
+          cancelNum: 87,
+          cancellationsNum: 87,
+          state: '待收货',
+          applicant: '张三',
+          planner: '2021-10-15 10:35:23',
+          applicationime: '2021-10-15 10:35:23',
+          updateTime: '2021-10-15 10:35:23'
+        },
+        {
+          id: 'DB20211015000001',
+          transferred: '云镖网络科技有限公司',
+          sourceType: 'xyj店铺',
+          sourceNum: 'DMI调拨',
+          idleNum:20,
+          applications: '',
+          sentNum: '10',
+          cancelNum: 87,
+          cancellationsNum: 87,
+          state: '待收货',
+          applicant: '张三',
+          planner: '2021-10-15 10:35:23',
+          applicationime: '2021-10-15 10:35:23',
+          updateTime: '2021-10-15 10:35:23'
+        }
+>>>>>>> Stashed changes
 
       // 筛选表单数据
       filterInfo:{
