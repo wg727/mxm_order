@@ -1,11 +1,20 @@
 <template>
   <div>
+<<<<<<< Updated upstream
     <span class="detail_title">产品列表</span>
     <el-card>
       <!-- 按钮搜索/添加区域 -->
       <el-row :gutter="10">
         <el-col :span="5">
             <el-input placeholder="请输入产品名称"  clearable v-model="queryInfo.query" ></el-input>
+=======
+    <span>产品列表</span>
+    <el-card>
+      <!-- 按钮搜索/添加区域 -->
+      <el-row :gutter="10">
+        <el-col :span="7">
+            <el-input placeholder="请输入产品名称"  clearable v-model="queryInfo.query"></el-input>
+>>>>>>> Stashed changes
             <el-button  icon="el-icon-search" ></el-button>
         </el-col>
       </el-row>
@@ -14,6 +23,7 @@
       <el-row class="row">
         <el-table :data="proList" border style="width: 100%">
           <el-table-column prop="name" label="产品名称"></el-table-column>
+          <el-table-column prop="idleNum" label="闲置数量" ></el-table-column>
           <el-table-column prop="applicationsNum" label="申请数量"></el-table-column>
           <el-table-column prop="approvalsNum" label="审批数量" ></el-table-column>
           <el-table-column prop="sentNum" label="待发数量" ></el-table-column>
@@ -53,12 +63,34 @@ export default {
       proList: [
         {
           name: '磁悬浮地球仪-无规格',
+          idleNum:20,
           applicationsNum: 25,
           approvalsNum: 25,
           sentNum: 25,
           cancellationsNum: 25
         },
+<<<<<<< Updated upstream
         
+=======
+        {
+          name: '磁悬浮地球仪-无规格-绝大多数',
+          idleNum:20,
+          applicationsNum: 25,
+          approvalsNum: 11,
+          sentNum: 4,
+          cancelNum: 25,
+          cancellationsNum: 25
+        },
+        {
+          name: '磁悬浮地球仪-无规格-数据库',
+          idleNum:20,
+          applicationsNum: 25,
+          approvalsNum: 25,
+          sentNum: 25,
+          cancelNum: 8,
+          cancellationsNum: 3
+        }
+>>>>>>> Stashed changes
       ]
 
     }
