@@ -241,6 +241,9 @@ h2{
 	float: right;
 }
 // 添加产品的对话框
+// .addProductVisible .el-dialog__body{
+// 	border: 1px solid ;
+// }
 .addProductVisible{
 	padding: 10px;
 	// border-top: 1px solid rgb(240, 230, 230);

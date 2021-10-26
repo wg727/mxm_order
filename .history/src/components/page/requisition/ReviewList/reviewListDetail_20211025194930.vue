@@ -73,7 +73,7 @@
 							</el-select>
 						</template>
 					</el-table-column>
-          <el-table-column  label="审批数量" width="250px">
+          <el-table-column  label="审批数量" width="200px">
 						<template v-slot="scoped">
 								<el-input type="number" placeholder="请输入数量" v-model="value">{{scoped.row}}</el-input>
 							</template>

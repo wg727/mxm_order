@@ -3,7 +3,7 @@
 		<div class="transferDetail">
       <span class="detail_title">综合调拨单详情</span>
 			<div class="button">
-				<el-button  size="small" @click="gobackDetail">发货申请</el-button>
+				<el-button  size="small" @click="goback">发货申请</el-button>
 				<el-button  size="small" @click="goback">返回</el-button>
 			</div>
 		</div>
@@ -60,7 +60,7 @@
 			</div>
 
 			<div class="login-body">
-        <el-steps :active="4" finish-status="success" size="medium" :space="200" :align-center="true" style="width: 700px">
+        <el-steps :active="2" finish-status="success" size="medium" :space="200" :align-center="true" style="width: 700px">
           <el-step title="员工李季单据提交" description="2021-10-22 17:30:19" />
           <el-step title="超级管理员审批同意" description="2021-10-22 17:30:19"/>
           <el-step title="员工李季已发货" description="2021-10-22 17:30:19"/>
@@ -362,9 +362,6 @@ export default {
 		}
 	},
 	methods:{
-		gobackDetail(){
-			this.$router.push('/transfer/transferDetai/shipApplication')
-		},
 		//返回
 		goback(){
 			this.$router.push('/transfer')
@@ -447,11 +444,11 @@ export default {
     height: 90%;
 		margin-top: 40px;
     ::v-deep .el-step__icon{
-          width: 30px;
-          height: 30px;
+          width: 40px;
+          height: 40px;
         }
     ::v-deep .el-step__line{
-      top: 15px;
+      top: 25px;
     }
 }
 

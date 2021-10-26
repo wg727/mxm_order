@@ -7,9 +7,8 @@
         <el-button size="small" icon="el-icon-printer"> 批量导出 </el-button>
         <el-dropdown trigger="click" >
           <el-button class="el_dropdown" icon="el-icon-lx-filter" size="small">筛选</el-button>
-          
-          <el-dropdown-menu >
             <el-form :model="filterInfo">
+          <el-dropdown-menu >
               <el-row >
                   <el-form-item label="调出组织:" class="filter_el-col">
                     <el-input placeholder="输入调出组织" v-model="filterInfo.transOrganiza"></el-input>
@@ -65,8 +64,8 @@
                     <el-button type="danger" >确定</el-button>
                   </el-form-item>
               </el-row>
-            </el-form>
           </el-dropdown-menu>
+            </el-form>
         </el-dropdown>
       </div>
 		</div>

@@ -66,14 +66,14 @@
           <el-table-column prop="specification" label="规格" width="90px" ></el-table-column>
           <el-table-column prop="unit" label="单位" width="90px"></el-table-column>
           <el-table-column prop="applicationsNum" label="申请数量" width="90px"></el-table-column>
-          <el-table-column label="调出组织" width="250px" >
+          <el-table-column label="调出组织" width="300px" >
 						<template>
 							<el-select v-model="value" placeholder="请选择">
 								<el-option 	v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
 							</el-select>
 						</template>
 					</el-table-column>
-          <el-table-column  label="审批数量" width="250px">
+          <el-table-column  label="审批数量" >
 						<template v-slot="scoped">
 								<el-input type="number" placeholder="请输入数量" v-model="value">{{scoped.row}}</el-input>
 							</template>

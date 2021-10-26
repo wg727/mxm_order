@@ -1,32 +1,81 @@
 <template>
 	<div>
 		<div class="transheader">
-      <span class="detail_title">新增调拨单-发货申请</span>
+      <span class="detail_title">新增发货申请</span>
       <div class="button">
-        <el-button size="small" plain @click="addInvoiceInfo()">添加发货信息 </el-button>
         <el-button size="small" plain  @click="$router.push('/transfer')"> 取消 </el-button>
         <el-button size="small"   type="danger"> 保存 </el-button>
       </div>
 		</div>
 
-		<el-card id="add_Invoice">
-			
-		<InvoiceInfo id="info"></InvoiceInfo>
-
+		<el-card>
+			<span>发货单信息</span>
+			<div class="invoice_info_div">
+				<el-form :model="addInfo" >
+					<el-row>
+						<el-col :span="12">
+							<el-form-item  label="收货人：" prop="name" >
+								<el-input v-model="addInfo.receiver" placeholder="请选择收货人"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :span="11" class="odd_lie">
+							<el-form-item  label="收货电话：" prop="name" >
+								<el-input v-model="addInfo.receivingPhone" placeholder="请输入收货电话"></el-input>
+							</el-form-item>
+						</el-col>
+					</el-row>
+					<el-row>
+						<el-col :span="12" >
+							<el-form-item label="省市区："><br>
+								<el-cascader v-model="addInfo.city" :options="citys"  placeholder="请选择省市区"></el-cascader> 
+							</el-form-item>
+						</el-col>
+						<el-col :span="11" class="odd_lie">
+							<el-form-item  label="详细地址：" prop="name" >
+								<el-input v-model="addInfo.address" placeholder="请输入详细收货地址"></el-input>
+							</el-form-item>
+						</el-col>
+					</el-row>
+					<el-row>
+						<el-col :span="12">
+							<el-form-item  label="期望发货日期：" prop="name" ><br>
+								<el-date-picker  style="width:100%" v-model="addInfo.deliveryTime" type="date" placeholder="选择期望发货日期" > </el-date-picker>
+							</el-form-item>
+						</el-col>
+						<el-col :span="11" class="odd_lie">
+							<el-form-item label="收货场景：" >
+								<el-select v-model="addInfo.assetsOrg" placeholder="请选择收货场景" style="width:100%">
+									<el-option label="区域一" value="shanghai" ></el-option>
+									<el-option label="区域二" value="beijing"></el-option>
+								</el-select>
+							</el-form-item>
+						</el-col>
+					</el-row>
+					<el-row>
+						<el-col>
+							<el-form-item label="收货场景：" >
+								<el-input type="textarea" placeholder="请输入备注信息(不超200字)" v-model="addInfo.remark" maxlength="200" show-word-limit > </el-input>
+							</el-form-item>
+						</el-col>
+					</el-row>
+				</el-form>
+			</div>
 
 			<!-- 产品明细行 -->
 			<div class="productLine">
-				<span>产品明细行</span>
-				<el-button size="small" @click="addProductVisible = true">添加产品</el-button>
+				<span>发货清单</span>
 				<el-row class="row">
 					<el-table :data="productLine" border style="width: 100%">
-						<el-table-column prop="index" label="序列"></el-table-column>
 						<el-table-column prop="productName" label="产品名称"></el-table-column>
 						<el-table-column prop="specification" label="规格" ></el-table-column>
 						<el-table-column prop="unit" label="单位" ></el-table-column>
-						<el-table-column prop="idleNum" label="闲置数量" ></el-table-column>
-						<el-table-column prop="applicationNum" label="申请数量" ></el-table-column>
-						<el-table-column prop="operate" label="操作" ></el-table-column>
+						<el-table-column prop="idleNum" label="调出组织" ></el-table-column>
+						<el-table-column prop="applicationNum" label="可申请数量" ></el-table-column>
+						<el-table-column label="申请发货数量" >
+							<template v-slot="scoped">
+								<el-input type="number" placeholder="请输入数量" v-model="applicationShipNum">{{scoped.row}}</el-input>
+							</template>
+						</el-table-column>
 					</el-table>
 				</el-row>
 			</div> 
@@ -70,12 +119,8 @@
 </template>
 
 <script>
-import  InvoiceInfo from '../../../common/InvoiceInfo.vue'
-
 export default {
 	name:'Add',
-	components:{InvoiceInfo},
-	
 	data(){
 		return{
 			// 新增调拨单提交信息
@@ -143,15 +188,16 @@ export default {
 			// 产品明细行列表数据
 			productLine: [
         {
-          index: 'MXM001',         //序列
-          productName: '机器人',   //产品名称
-          specification:1,         //规格
-          unit: '个',              //单位
-					idleNum:20,              //闲置数量
-          applicationNum: 3,       //申请数量
-          operate: ''              //操作
+          productName: '阿修罗',   
+          specification:'选择色系:颜色：蓝',        
+          unit:'默认',              
+					idleNum:'云镖网络科技有限公司',              
+          applicationNum:0,
         },
 			],
+			//申请发货数量
+			applicationShipNum:1,
+
 
 			// 添加产品的对话框
 			addProductVisible: false,
@@ -176,14 +222,7 @@ export default {
             done();
           })
           .catch(_ => {});
-      },
-		
-		addInvoiceInfo(){
-			var add_Invoice=document.getElementById('add_Invoice');
-			var info =document.getElementById('info')
-			add_Invoice.appendChild(info)
-		}
-	
+      }
 	}
 }
 </script>
@@ -241,6 +280,9 @@ h2{
 	float: right;
 }
 // 添加产品的对话框
+// .addProductVisible .el-dialog__body{
+// 	border: 1px solid ;
+// }
 .addProductVisible{
 	padding: 10px;
 	// border-top: 1px solid rgb(240, 230, 230);

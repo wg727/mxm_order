@@ -66,14 +66,14 @@
           <el-table-column prop="specification" label="规格" width="90px" ></el-table-column>
           <el-table-column prop="unit" label="单位" width="90px"></el-table-column>
           <el-table-column prop="applicationsNum" label="申请数量" width="90px"></el-table-column>
-          <el-table-column label="调出组织" width="250px" >
+          <el-table-column label="调出组织" width="300px" >
 						<template>
 							<el-select v-model="value" placeholder="请选择">
 								<el-option 	v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
 							</el-select>
 						</template>
 					</el-table-column>
-          <el-table-column  label="审批数量" width="250px">
+          <el-table-column  label="审批数量" >
 						<template v-slot="scoped">
 								<el-input type="number" placeholder="请输入数量" v-model="value">{{scoped.row}}</el-input>
 							</template>
@@ -82,9 +82,7 @@
           <el-table-column label="查询组织库存" >
 						<el-button type="text" @click="lookViewDialog = true">查看</el-button>
 					</el-table-column>
-          <el-table-column label="操作" >
-						<el-button type="text">拆行</el-button>
-					</el-table-column>
+          <el-table-column prop="operate" label="操作" ></el-table-column>
         </el-table>
       </el-row>
 		</el-card>
@@ -101,39 +99,26 @@
 				<!-- 按钮搜索/添加区域 -->
 				<el-row :gutter="10">
 					<el-col :span="12">
-							<el-input placeholder="请输入组织名称"  clearable v-model="addProductVisibleInfo.query" ></el-input> &nbsp;
-							<el-input placeholder="请输入省份"  clearable v-model="addProductVisibleInfo.query" ></el-input>
-							<el-button class="search_button">搜索</el-button>
-							<el-button >重置</el-button>
+							<el-input placeholder="请输入组织名称"  clearable v-model="addProductVisibleInfo.query" class="search_input"></el-input> &nbsp;
+							<el-input placeholder="请输入省份"  clearable v-model="addProductVisibleInfo.query" class="search_input"></el-input>
+							<el-button  icon="el-icon-search" class="search_button"></el-button>
 					</el-col>
 				</el-row>
 
 				<!-- table区域 -->
 				<el-row class="row">
 					<el-table :data="dialogTableList" border style="width: 100%" header-cell-class-name="table-header" @selection-change="handleSelectionChange">
-						<el-table-column prop="organizas" label="组织"></el-table-column>
-						<el-table-column prop="city" label="	省份-城市"></el-table-column>
-						<el-table-column prop="available" label="可用量" ></el-table-column>
-						<el-table-column prop="purchaseInventory" label="采购在途库存" ></el-table-column>
-						<el-table-column prop="allocateInventory" label="调拨在途库存" ></el-table-column>
+						<el-table-column type="selection" width="55" align="center"></el-table-column>
+						<el-table-column prop="name" label="产品名称"></el-table-column>
+						<el-table-column prop="specification" label="规格"></el-table-column>
+						<el-table-column prop="unit" label="单位" ></el-table-column>
 					</el-table>
 				</el-row>
 
-				<!-- 分页 -->
-				<el-pagination
-					@current-change="handleCurrentChange"
-					:current-page="queryInfo.pagenum"
-					@size-change="handleSizeChange"
-					:page-size="queryInfo.pagesize"
-					:page-sizes="[5, 10, 20, 50]"
-					layout="total, sizes, prev, pager, next, jumper"
-					:total="total">
-				</el-pagination>
-
 			</div>
 			<span slot="footer" class="dialog-footer">
-				<el-button @click="lookViewDialog = false">取 消</el-button>
-				<el-button type="primary" @click="lookViewDialog = false">确 定</el-button>
+				<el-button @click="addProductVisible = false">取 消</el-button>
+				<el-button type="primary" @click="addProductVisible = false">确 定</el-button>
 			</span>
 		</el-dialog>
 
@@ -188,25 +173,12 @@ export default {
 			// 列表数据
 			dialogTableList:[
         {
-          organizas: '郑祺贤咕咕家的零售公司',
-          city: '广东省-广东省',
-          available: 0,
-          purchaseInventory: 0,
-          allocateInventory: 0,
+          name: '磁悬浮地球仪-无规格',
+          specification: 25,
+          unit: '个',
         },
         
-      ],
-			//分页数据
-			queryInfo: {
-        // 搜索值
-        query: '',
-        // 当前的页数
-        pagenum: 1,
-        // 当前每次显示多少条数据
-        pagesize: 5
-      },
-			total: 100,
-      currentPage4: 10,
+      ]
 		}
 	},
 	methods:{
@@ -295,13 +267,6 @@ export default {
 	.el-col{
 			display: flex;
 	}
-	.search_button{
-		margin: 0px 10px;
-	}
-}
-.el-pagination{
-	margin-top: 20px;
-	margin-left:100px;
 }
 
 

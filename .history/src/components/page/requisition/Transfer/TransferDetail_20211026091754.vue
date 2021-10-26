@@ -60,7 +60,7 @@
 			</div>
 
 			<div class="login-body">
-        <el-steps :active="4" finish-status="success" size="medium" :space="200" :align-center="true" style="width: 700px">
+        <el-steps :active="2" finish-status="success" size="medium" :space="200" :align-center="true" style="width: 700px">
           <el-step title="员工李季单据提交" description="2021-10-22 17:30:19" />
           <el-step title="超级管理员审批同意" description="2021-10-22 17:30:19"/>
           <el-step title="员工李季已发货" description="2021-10-22 17:30:19"/>
@@ -451,7 +451,7 @@ export default {
           height: 30px;
         }
     ::v-deep .el-step__line{
-      top: 15px;
+      top: 10px;
     }
 }
 

@@ -11,8 +11,8 @@
 
 		<el-card id="add_Invoice">
 			
-		<InvoiceInfo id="info"></InvoiceInfo>
-
+		<InvoiceInfo></InvoiceInfo>
+			
 
 			<!-- 产品明细行 -->
 			<div class="productLine">
@@ -180,8 +180,7 @@ export default {
 		
 		addInvoiceInfo(){
 			var add_Invoice=document.getElementById('add_Invoice');
-			var info =document.getElementById('info')
-			add_Invoice.appendChild(info)
+			var invoice = document.create
 		}
 	
 	}
@@ -241,6 +240,9 @@ h2{
 	float: right;
 }
 // 添加产品的对话框
+// .addProductVisible .el-dialog__body{
+// 	border: 1px solid ;
+// }
 .addProductVisible{
 	padding: 10px;
 	// border-top: 1px solid rgb(240, 230, 230);

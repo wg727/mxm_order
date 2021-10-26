@@ -3,16 +3,15 @@
 		<div class="transheader">
       <span class="detail_title">新增调拨单-发货申请</span>
       <div class="button">
-        <el-button size="small" plain @click="addInvoiceInfo()">添加发货信息 </el-button>
         <el-button size="small" plain  @click="$router.push('/transfer')"> 取消 </el-button>
         <el-button size="small"   type="danger"> 保存 </el-button>
       </div>
 		</div>
 
-		<el-card id="add_Invoice">
+		<el-card>
 			
-		<InvoiceInfo id="info"></InvoiceInfo>
-
+		
+			
 
 			<!-- 产品明细行 -->
 			<div class="productLine">
@@ -70,12 +69,10 @@
 </template>
 
 <script>
-import  InvoiceInfo from '../../../common/InvoiceInfo.vue'
-
+import  InvoiceInfo from '@/components/common/InvoiceInfo'
 export default {
 	name:'Add',
-	components:{InvoiceInfo},
-	
+	compentents:{InvoiceInfo},
 	data(){
 		return{
 			// 新增调拨单提交信息
@@ -176,14 +173,7 @@ export default {
             done();
           })
           .catch(_ => {});
-      },
-		
-		addInvoiceInfo(){
-			var add_Invoice=document.getElementById('add_Invoice');
-			var info =document.getElementById('info')
-			add_Invoice.appendChild(info)
-		}
-	
+      }
 	}
 }
 </script>
@@ -241,6 +231,9 @@ h2{
 	float: right;
 }
 // 添加产品的对话框
+// .addProductVisible .el-dialog__body{
+// 	border: 1px solid ;
+// }
 .addProductVisible{
 	padding: 10px;
 	// border-top: 1px solid rgb(240, 230, 230);

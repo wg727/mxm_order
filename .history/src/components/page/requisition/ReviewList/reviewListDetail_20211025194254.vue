@@ -66,14 +66,14 @@
           <el-table-column prop="specification" label="规格" width="90px" ></el-table-column>
           <el-table-column prop="unit" label="单位" width="90px"></el-table-column>
           <el-table-column prop="applicationsNum" label="申请数量" width="90px"></el-table-column>
-          <el-table-column label="调出组织" width="250px" >
+          <el-table-column label="调出组织" width="300px" >
 						<template>
 							<el-select v-model="value" placeholder="请选择">
 								<el-option 	v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
 							</el-select>
 						</template>
 					</el-table-column>
-          <el-table-column  label="审批数量" width="250px">
+          <el-table-column  label="审批数量" >
 						<template v-slot="scoped">
 								<el-input type="number" placeholder="请输入数量" v-model="value">{{scoped.row}}</el-input>
 							</template>
@@ -82,9 +82,7 @@
           <el-table-column label="查询组织库存" >
 						<el-button type="text" @click="lookViewDialog = true">查看</el-button>
 					</el-table-column>
-          <el-table-column label="操作" >
-						<el-button type="text">拆行</el-button>
-					</el-table-column>
+          <el-table-column prop="operate" label="操作" ></el-table-column>
         </el-table>
       </el-row>
 		</el-card>
@@ -132,8 +130,8 @@
 
 			</div>
 			<span slot="footer" class="dialog-footer">
-				<el-button @click="lookViewDialog = false">取 消</el-button>
-				<el-button type="primary" @click="lookViewDialog = false">确 定</el-button>
+				<el-button @click="addProductVisible = false">取 消</el-button>
+				<el-button type="primary" @click="addProductVisible = false">确 定</el-button>
 			</span>
 		</el-dialog>
 
@@ -298,10 +296,6 @@ export default {
 	.search_button{
 		margin: 0px 10px;
 	}
-}
-.el-pagination{
-	margin-top: 20px;
-	margin-left:100px;
 }
 
 

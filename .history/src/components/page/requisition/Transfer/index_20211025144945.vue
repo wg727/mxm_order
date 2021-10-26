@@ -7,7 +7,6 @@
         <el-button size="small" icon="el-icon-printer"> 批量导出 </el-button>
         <el-dropdown trigger="click" >
           <el-button class="el_dropdown" icon="el-icon-lx-filter" size="small">筛选</el-button>
-          
           <el-dropdown-menu >
             <el-form :model="filterInfo">
               <el-row >

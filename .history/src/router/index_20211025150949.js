@@ -44,13 +44,13 @@ export default new Router({
                     component: () => import ( "../components/page/requisition/Transfer/TransferDetail.vue")
                 },
                 {
-                    path: "/transfer/transferDetai/shipApplication",
-                    name: "shipApplication",
+                    path: "/transfer/transferDetail",
+                    name: "TransferDetail",
                     meta: {
-                        title: '发货申请',
+                        title: '综合调拨申请详情',
                         permission: true
                     },
-                    component: () => import ( "../components/page/requisition/Transfer/ShipApplication.vue")
+                    component: () => import ( "../components/page/requisition/Transfer/TransferDetail.vue")
                 },
                 {
                     path: '/prolist',
