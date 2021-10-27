@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="transheader">
-            <h2>新增采购订单</h2>
+            <h2>广告订单新增</h2>
             <div class="button">
                 <el-button size="small"> 取消 </el-button>
                 <el-button size="small" type="danger"> 保存 </el-button>
@@ -9,52 +9,40 @@
         </div>
 
         <el-card>
-            <span>订单基本信息</span>
+            <span>客户信息</span>
             <div class="a">
                 <el-row :gutter="20">
                     <el-col :span="12" class="colPadding">
-                        供应商:<br /><el-select v-model="value" placeholder="请选择供应商">
+                        客户名称:<br /><el-select v-model="value" placeholder="请选择客户名称">
                             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
                         </el-select>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        采购用途:<el-input placeholder="请输入采购用途" v-model="addSalesOrderInfo.phoneNum"></el-input>
+                        客户地址:<el-input placeholder="选择客户后自动带出" v-model="addSalesOrderInfo.address" :disabled="true"></el-input>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        申请日期<br />
-                        <el-date-picker
-                            class="eldatePicker"
-                            v-model="addSalesOrderInfo.contractDate"
-                            align="right"
-                            type="date"
-                            placeholder="请输入申请日期"
-                        >
-                        </el-date-picker>
+                        联系人:<br /><el-select v-model="value" placeholder="请选择联系人（先选择客户）">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        计划到货日期<br />
-                        <el-date-picker
-                            class="eldatePicker"
-                            v-model="addSalesOrderInfo.contractDate"
-                            align="right"
-                            type="date"
-                            placeholder="请输入计划到货日期"
-                        >
-                        </el-date-picker>
+                        联系电话:<el-input placeholder="请输入联系电话" v-model="addSalesOrderInfo.phoneNum"></el-input>
                     </el-col>
-                    <el-col :span="12" class="colPadding">
-                        合同名称:<el-input placeholder="请输入合同名称" v-model="addSalesOrderInfo.phoneNum"></el-input>
+                </el-row>
+            </div>
+
+            <div class="a">
+                <span>订单基本信息</span>
+                <el-row :gutter="20" class="orderMessage">
+                    <el-col :span="12">
+                        商机:<br /><el-select v-model="value" placeholder="请选择商机(先选择客户)">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
                     </el-col>
-                    <el-col :span="12" class="colPadding">
-                        签约日期<br />
-                        <el-date-picker
-                            class="eldatePicker"
-                            v-model="addSalesOrderInfo.contractDate"
-                            align="right"
-                            type="date"
-                            placeholder="请输入签约日期"
-                        >
-                        </el-date-picker>
+                    <el-col :span="12">
+                        货币:<br /><el-select v-model="value" placeholder="请选择货币">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
                     </el-col>
                     <el-col :span="12" class="colPadding">
                         印章类别:<br /><el-select v-model="value" placeholder="请选择印章类别">
@@ -62,15 +50,60 @@
                         </el-select>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        印章公司名称:<el-input placeholder="请输入印章公司名称" v-model="addSalesOrderInfo.phoneNum"></el-input>
+                        印章公司名称:<el-input placeholder="请输入印章公司名称" v-model="addSalesOrderInfo.sealCompany"></el-input>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        合同类型:<br /><el-select v-model="value" placeholder="">
+                        合同类型:<br /><el-select v-model="value" placeholder="请选择合同类型">
                             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
                         </el-select>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        合同模板:<br /><el-select v-model="value" placeholder="">
+                        合同模版:<br /><el-select v-model="value" placeholder="请选择合同模版">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        合同开始日期<br />
+                        <el-date-picker
+                            class="eldatePicker"
+                            v-model="addSalesOrderInfo.contractDate"
+                            align="right"
+                            type="date"
+                            placeholder="请输入合同开始日期"
+                        >
+                        </el-date-picker>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        合同结束日期<br />
+                        <el-date-picker
+                            class="eldatePicker"
+                            v-model="addSalesOrderInfo.contractDate"
+                            align="right"
+                            type="date"
+                            placeholder="请输入合同结束日期"
+                        >
+                        </el-date-picker>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        付款方式:<br /><el-select v-model="value" placeholder="">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        合同名称:<el-input placeholder="请输入合同名称" v-model="addSalesOrderInfo.sealCompany"></el-input>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        订单负责人:<br /><el-select v-model="value" placeholder="请选择订单负责人">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        订单售卖类型:<br /><el-select v-model="value" placeholder="">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        合同签约公司:<br /><el-select v-model="value" placeholder="请选择合同签约公司">
                             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
                         </el-select>
                     </el-col>
@@ -78,79 +111,103 @@
                         启用钉钉流程:<br />
                         <el-switch v-model="addSalesOrderInfo.startDing" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
                     </el-col>
-                    <el-col :span="12" class="colPadding">
-                        钉钉部门:<br /><el-select v-model="value" placeholder="请选择钉钉部门">
-                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
-                        </el-select>
-                    </el-col>
                     <el-col :span="24" class="colPadding">
                         备注:<br />
                         <el-input type="textarea" :rows="4" placeholder="请输入备注" v-model="addSalesOrderInfo.remark"></el-input>
                     </el-col>
+                    <!-- <el-col :span="24" class="colPadding">
+                        特别约定:<br />
+                        <el-input
+                            type="textarea"
+                            :rows="4"
+                            placeholder="请输入备注"
+                            v-model="addSalesOrderInfo.specialAppointment"
+                        ></el-input>
+                    </el-col> -->
                 </el-row>
             </div>
 
             <div class="a">
-                <span>收货信息</span>
-                <el-row :gutter="20" class="orderMessage">
+                <span>广告明细</span>
+                <el-row>
                     <el-col :span="12" class="colPadding">
-                        收货人:<el-input placeholder="请输入收货人" v-model="addSalesOrderInfo.phoneNum"></el-input>
+                        广告名称:<br /><el-select v-model="value" placeholder="">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        收货人联系电话:<el-input placeholder="请输入联系电话" v-model="addSalesOrderInfo.phoneNum"></el-input>
+                        投放开始日期<br />
+                        <el-date-picker
+                            class="eldatePicker"
+                            v-model="addSalesOrderInfo.contractDate"
+                            align="right"
+                            type="date"
+                            placeholder="请输入合同开始日期"
+                        >
+                        </el-date-picker>
                     </el-col>
                     <el-col :span="12" class="colPadding">
-                        省市区:<br /><el-select v-model="value" placeholder="请选择省市区">
+                        投放结束日期<br />
+                        <el-date-picker
+                            class="eldatePicker"
+                            v-model="addSalesOrderInfo.contractDate"
+                            align="right"
+                            type="date"
+                            placeholder="请输入合同结束日期"
+                        >
+                        </el-date-picker>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        播放周期:<br /><el-select v-model="value" placeholder="">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-button size="small" class="colPadding">新增播放时间段</el-button>
+                    <el-table :data="productLine" border style="width: 100%" class="colPadding">
+                        <el-table-column prop="index" label="序号"></el-table-column>
+                        <el-table-column prop="productName" label="开始时间"></el-table-column>
+                        <el-table-column prop="contractProductName" label="结束时间"></el-table-column>
+                        <el-table-column prop="specification" label="操作"></el-table-column>
+                    </el-table>
+                    <el-col :span="12" class="colPadding">
+                        计划设备数(台):<el-input placeholder="请输入计划设备数" v-model="addSalesOrderInfo.sealCompany"></el-input>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        投放总次数(千次):<el-input placeholder="请输入投放总次数" v-model="addSalesOrderInfo.sealCompany"></el-input>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        投放地区:<br /><el-select v-model="value" placeholder="请选择省市区">
                             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
                         </el-select>
                     </el-col>
                     <el-col :span="12" class="colPadding">
                         详细地址:<el-input placeholder="请输入详细地址" v-model="addSalesOrderInfo.sealCompany"></el-input>
                     </el-col>
+                    <el-col :span="12" class="colPadding">
+                        投放场景:<el-input placeholder="请输入投放场景" v-model="addSalesOrderInfo.sealCompany"></el-input>
+                    </el-col>
+                    <el-col :span="12" class="colPadding">
+                        订单金额:<el-input placeholder="请输入订单金额" v-model="addSalesOrderInfo.sealCompany"></el-input>
+                    </el-col>
                 </el-row>
             </div>
 
-            <!-- 产品明细行 -->
-            <div class="productLine">
-                <span>产品明细行</span>
-                <el-button size="small">删除产品</el-button>
-                <el-button size="small" @click="addDialogVisible = true">添加产品</el-button>
+            <!-- 广告明细行 -->
+            <!-- <div class="productLine">
+                <span>广告明细</span>
+
                 <el-row class="row">
                     <el-table :data="productLine" border style="width: 100%">
-                        <el-table-column prop="img" label="图片"></el-table-column>
-                        <el-table-column prop="index" label="产品名称"></el-table-column>
-                        <el-table-column prop="code" label="编码"></el-table-column>
-                        <el-table-column prop="productName" label="规格"></el-table-column>
-                        <el-table-column prop="unit" label="单位"></el-table-column>
-                        <el-table-column prop="unitPrice" label="单价(元)"></el-table-column>
-                        <el-table-column prop="bunbers" label="数量"></el-table-column>
-                        <el-table-column prop="money" label="金额小计(元)"></el-table-column>
-                        <el-table-column prop="operate" label="操作"></el-table-column>
-                        <el-table-column prop="view" label="查看"></el-table-column>
+                        <el-table-column prop="index" label="序号"></el-table-column>
+                        <el-table-column prop="productName" label="开始时间"></el-table-column>
+                        <el-table-column prop="contractProductName" label="结束时间"></el-table-column>
+                        <el-table-column prop="specification" label="操作"></el-table-column>
                     </el-table>
                 </el-row>
-                <div class="a">
-                    <el-row :gutter="20" class="orderMessage">
-                        <el-col :span="12">
-                            订单总价:<el-input placeholder="请输入订单总价" v-model="addSalesOrderInfo.sealCompany"></el-input>
-                        </el-col>
-                        <el-col :span="12">
-                            运费:<el-input placeholder="请输入运费" v-model="addSalesOrderInfo.sealCompany"></el-input>
-                        </el-col>
-                        <el-col :span="12" class="colPadding">
-                            订单实际总价:<el-input placeholder="请输入订单实际总价" v-model="addSalesOrderInfo.sealCompany"></el-input>
-                        </el-col>
-                        <el-col :span="12" class="colPadding">
-                            付款方式:<br /><el-select v-model="value" placeholder="请选择付款方式">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
-                            </el-select>
-                        </el-col>
-                    </el-row>
-                </div>
-            </div>
+            </div> -->
         </el-card>
 
-        <!-- 添加产品的对话框 -->
+        <!-- 添加产品的对话框
         <el-dialog v-model="addDialogVisible" title="选择产品" width="50%" :before-close="handleClose">
             <span>This is a message</span>
             <template #footer>
@@ -159,7 +216,7 @@
                     <el-button type="primary" @click="addDialogVisible = false">确定</el-button>
                 </span>
             </template>
-        </el-dialog>
+        </el-dialog> -->
     </div>
 </template>
 
@@ -288,14 +345,12 @@ export default {
         };
     },
     methods: {
-        methods: {
-            handleClose(done) {
-                this.$confirm('确认关闭？')
-                    .then(_ => {
-                        done();
-                    })
-                    .catch(_ => {});
-            }
+        handleClose(done) {
+            this.$confirm('确认关闭？')
+                .then(_ => {
+                    done();
+                })
+                .catch(_ => {});
         }
     }
 };

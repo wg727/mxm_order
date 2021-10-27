@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <div class="transheader">
             <span class="detail_title">综合调拨申请列表</span>
@@ -141,12 +140,10 @@
             </el-pagination>
         </el-card>
     </div>
-
 </template>
 
 <script>
 export default {
-
     name: 'Transfer',
     data() {
         return {
@@ -238,8 +235,7 @@ export default {
 .el-pagination {
     margin-top: 20px;
     margin-left: 400px;
-
-
+}
 
 /* 筛选 */
 .button {
@@ -259,6 +255,4 @@ export default {
 .besure {
     margin-left: 250px;
 }
-
-
 </style>

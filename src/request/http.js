@@ -4,12 +4,12 @@ import { Message } from 'element-ui';
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {    
-    axios.defaults.baseURL = '';} 
+    axios.defaults.baseURL = 'http://10.0.4.84:8089/';} 
 else if (process.env.NODE_ENV == 'debug') {    
-    axios.defaults.baseURL = '';
+    axios.defaults.baseURL = 'http://10.0.4.84:8089/';
 } 
 else if (process.env.NODE_ENV == 'production') {    
-    axios.defaults.baseURL = '';
+    axios.defaults.baseURL = 'http://10.0.4.84:8089/';
 }
 
 axios.defaults.timeout = 10000; //超时时间

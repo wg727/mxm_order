@@ -86,7 +86,6 @@
                             align="right"
                             type="date"
                             placeholder="请输入合同开始日期"
-                            :picker-options="pickerOptions"
                         >
                         </el-date-picker>
                     </el-col>
@@ -98,7 +97,6 @@
                             align="right"
                             type="date"
                             placeholder="请输入合同结束日期"
-                            :picker-options="pickerOptions"
                         >
                         </el-date-picker>
                     </el-col>
@@ -110,7 +108,6 @@
                             align="right"
                             type="date"
                             placeholder="请输入签约日期"
-                            :picker-options="pickerOptions"
                         >
                         </el-date-picker>
                     </el-col>
