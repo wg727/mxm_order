@@ -156,6 +156,14 @@ export default new Router({
                     component: () => import ( '../components/page/order/advertisementOrder/index.vue')
                 },
                 {
+                    path: '/advertisementOrder/add',
+                    name: 'advertisementOrder',
+                    meta: {
+                        title: '广告订单新增'
+                    },
+                    component: () => import ( '../components/page/order/advertisementOrder/add.vue')
+                },
+                {
                     path: '/leaseExchange',
                     name: 'leaseExchange',
                     meta: {

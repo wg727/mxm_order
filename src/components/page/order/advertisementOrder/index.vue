@@ -6,7 +6,7 @@
         <el-card class="allOrderList">
             <div class="transheader">
                 <div class="button">
-                    <el-button size="small"> + 新增 </el-button>
+                    <el-button size="small" @click="advertisementOrder"> + 新增 </el-button>
                     <el-button size="small"> 批量导出 </el-button>
                     <el-popover ref="popoverRef" placement="bottom-start" width="400" trigger="click">
                         <el-form :model="filterInfo">
@@ -306,6 +306,10 @@ export default {
         //筛选窗关闭
         close() {
             this.$refs.popoverRef.doClose();
+        },
+        //新增跳转
+        advertisementOrder() {
+            this.$router.push('/advertisementOrder/add');
         }
     }
 };
