@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<div class="transheader">
-      <h2>综合调拨申请列表</h2>
+      <span>综合调拨申请列表</span>
       <div class="button">
-        <el-button size="small" icon="el-icon-plus" @click="goAddpage">  新增</el-button>
+        <el-button size="small" icon="el-icon-plus" @click="goAddpage()">  新增</el-button>
         <el-button size="small" icon="el-icon-printer"> 批量导出 </el-button>
         <el-button size="small" icon="el-icon-lx-filter"> 筛选 </el-button>
       </div>
@@ -26,6 +26,7 @@
 						<el-table-column prop="organization" label="资产所属组织"></el-table-column>
 						<el-table-column prop="transferred" label="调入管理组织" ></el-table-column>
 						<el-table-column prop="sourceType" label="来源类型" ></el-table-column>
+						<el-table-column prop="idleNum" label="闲置数量" ></el-table-column>
 						<el-table-column prop="applications" label="申请数量" ></el-table-column>
 						<el-table-column prop="approvalsNum" label="审批数量" ></el-table-column>
 						<el-table-column prop="sentNum" label="待发数量" ></el-table-column>
@@ -79,6 +80,7 @@ export default {
           organization: '云镖网络科技有限公司',
           transferred: 'xyj店铺',
           sourceType: 'DMI调拨',
+          idleNum:20, 
           applications: '10',
           approvalsNum: 1,
           sentNum: 87,
@@ -95,6 +97,7 @@ export default {
           organization: '云镖网络科技有限公司',
           transferred: 'xyj店铺',
           sourceType: 'DMI调拨',
+          idleNum:20, 
           applications: '10',
           approvalsNum: 1,
           sentNum: 87,
@@ -111,6 +114,7 @@ export default {
           organization: '云镖网络科技有限公司',
           transferred: 'xyj店铺',
           sourceType: 'DMI调拨',
+          idleNum:20, 
           applications: '10',
           approvalsNum: 1,
           sentNum: 87,
@@ -127,6 +131,7 @@ export default {
           organization: '云镖网络科技有限公司',
           transferred: 'xyj店铺',
           sourceType: 'DMI调拨',
+          idleNum:20, 
           applications: '10',
           approvalsNum: 1,
           sentNum: 87,
@@ -143,6 +148,7 @@ export default {
           organization: '云镖网络科技有限公司',
           transferred: 'xyj店铺',
           sourceType: 'DMI调拨',
+          idleNum:20, 
           applications: '10',
           approvalsNum: 1,
           sentNum: 87,
@@ -153,7 +159,25 @@ export default {
           planner: '系统',
           applicationime: '2021-10-15 10:35:23',
           updateTime: '2021-10-18 15:59:40'
-        }
+        },
+        {
+          id: 'DB20211015000001',
+          organization: '云镖网络科技有限公司',
+          transferred: 'xyj店铺',
+          sourceType: 'DMI调拨',
+          idleNum:20, 
+          applications: '10',
+          approvalsNum: 1,
+          sentNum: 87,
+          cancelNum: 0,
+          cancellationsNum: 87,
+          state: '待收货',
+          applicant: '张三',
+          planner: '系统',
+          applicationime: '2021-10-15 10:35:23',
+          updateTime: '2021-10-18 15:59:40'
+        },
+        
 
       ]
 		}
@@ -169,7 +193,7 @@ export default {
       this.queryInfo.pagenum = newPage
     },
     goAddpage () {
-      this.$router.push('/transfer/add')
+      this.$router.push({path:'/transfer/add'})
     },
 		a(row){
 			this.$router.push("/add")
