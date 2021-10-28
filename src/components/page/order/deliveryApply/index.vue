@@ -9,9 +9,6 @@
                     <el-popover ref="popoverRef" placement="bottom-start" width="400" trigger="click">
                         <el-form :model="filterInfo">
                             <el-row>
-                                <el-form-item label="订单编码:" class="filter_el-col">
-                                    <el-input placeholder="输入订单编码" v-model="filterInfo.orderCode"></el-input>
-                                </el-form-item>
                                 <el-form-item label="客户名称:" class="filter_el-col">
                                     <el-input placeholder="输入客户名称" v-model="filterInfo.customerName"></el-input>
                                 </el-form-item>
@@ -20,6 +17,9 @@
                                 </el-form-item>
                                 <el-form-item label="客户所在省份:" class="filter_el-col">
                                     <el-input placeholder="输入客户所在省份" v-model="filterInfo.customerProvince"></el-input>
+                                </el-form-item>
+                                <el-form-item label="地址:" class="filter_el-col">
+                                    <el-input placeholder="输入地址" v-model="filterInfo.customerProvince"></el-input>
                                 </el-form-item>
 
                                 <el-form-item label="产品类别:" class="filter_el-col">
@@ -115,7 +115,7 @@
                                 </el-form-item>
 
                                 <el-form-item class="besure">
-                                    <el-button>重置</el-button>
+                                    <el-button @click="test()">重置</el-button>
                                     <el-button type="danger" @click="close()">确定</el-button>
                                 </el-form-item>
                             </el-row>
@@ -168,17 +168,18 @@
     </div>
 </template>
 <script>
+import { apiTransferApplicationlist } from '@/request/api.js';
 export default {
     name: 'SalesOrder',
     data() {
         return {
             queryInfo: {
                 // 搜索值
-                query: '',
+                //query: '',
                 // 当前的页数
-                pagenum: 1,
+                //pagenum: 1,
                 // 当前每次显示多少条数据
-                pagesize: 5
+                //pagesize: 5
             },
             total: 100,
             currentPage4: 10,
@@ -310,6 +311,12 @@ export default {
         //筛选窗关闭
         close() {
             this.$refs.popoverRef.doClose();
+        },
+        test() {
+            //let data = { applyStatus: 0, auditQuery: 1 };
+            apiTransferApplicationlist({}).then(res => {
+                console.log(res.data);
+            });
         }
     }
 };

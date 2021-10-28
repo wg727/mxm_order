@@ -12,3 +12,5 @@ export const apiConsigneeInformation = p => post('neworder/other/api/order/getGo
 //调出组织产品 
 export const apiCallOutOrganizationalProducts = p => post('neworder/other/api/order/getGoods', p);
 
+//调拨申请列表-分页
+export const apiTransferApplicationlist = p => post('neworder/api/v1/allocate/list', p);

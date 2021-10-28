@@ -4,17 +4,18 @@ import { Message } from 'element-ui';
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {    
-    axios.defaults.baseURL = 'http://10.0.4.84:8089/';} 
+    axios.defaults.baseURL = 'http://10.0.32.240:8089/';} 
 else if (process.env.NODE_ENV == 'debug') {    
-    axios.defaults.baseURL = 'http://10.0.4.84:8089/';
+    axios.defaults.baseURL = 'http://10.0.32.240:8089/';
 } 
 else if (process.env.NODE_ENV == 'production') {    
-    axios.defaults.baseURL = 'http://10.0.4.84:8089/';
+    axios.defaults.baseURL = 'http://10.0.32.240:8089/';
 }
 
 axios.defaults.timeout = 10000; //超时时间
 
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; //post请求头设置
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8;'; //post请求头设置
+axios.defaults.headers.post['corTicket'] = '1_1635312848609';
 
 //响应拦截器
 axios.interceptors.response.use(    
@@ -80,7 +81,7 @@ export function get(url, params){
 
 export function post(url, params) {
     return new Promise((resolve, reject) => {
-         axios.post(url, QS.stringify(params))
+         axios.post(url, params)
         .then(res => {
             resolve(res.data);
         })
