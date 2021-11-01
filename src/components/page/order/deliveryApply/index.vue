@@ -168,7 +168,6 @@
     </div>
 </template>
 <script>
-import { apiTransferApplicationlist } from '@/request/api.js';
 export default {
     name: 'SalesOrder',
     data() {
@@ -311,12 +310,6 @@ export default {
         //筛选窗关闭
         close() {
             this.$refs.popoverRef.doClose();
-        },
-        test() {
-            //let data = { applyStatus: 0, auditQuery: 1 };
-            apiTransferApplicationlist({}).then(res => {
-                console.log(res.data);
-            });
         }
     }
 };

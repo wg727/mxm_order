@@ -61,7 +61,7 @@ export default new Router({
                     component: () => import ( '../components/page/requisition/Prolist/index.vue')
                 }, {
                     path: '/reviewList',
-                    name: 'review',
+                    name: 'reviewList',
                     meta: {
                         title: '审核调拨单'
                     },
@@ -227,6 +227,14 @@ export default new Router({
                         title: '销售退换货地址'
                     },
                     component: () => import ( '../components/page/order/salesreturnAddress/index.vue')
+                },
+                {
+                    path: '/test',
+                    name: 'test',
+                    meta: {
+                        title: '销售退换货地址'
+                    },
+                    component: () => import ( '../components/page/order/Test/index.vue')
                 },
                 
                 

@@ -79,29 +79,31 @@
             <!-- table区域 -->
             <el-row>
                 <el-table :data="goodsList" border style="width: 100%">
-                    <el-table-column prop="id" label="单据号">
+                    <el-table-column prop="applyCode" label="单据号">
                         <template v-slot="scope">
                             <div>
-                                <a href="javascript:;" @click="toReviewDetails">{{ scope.row.id }}</a>
+                                <a href="javascript:;" @click="toReviewDetails(scope.row.id)">{{ scope.row.applyCode }}</a>
                             </div>
                         </template>
                     </el-table-column>
 
-                    <el-table-column prop="transferred" label="调入组织"></el-table-column>
-                    <el-table-column prop="sourceType" label="来源类型"></el-table-column>
-                    <el-table-column prop="sourceNum" label="来源编号"></el-table-column>
+                    <el-table-column prop="inOrgName" label="调入组织"></el-table-column>
+                    <el-table-column prop="applyTypeText" label="来源类型"></el-table-column>
+                    <el-table-column prop="fromCode" label="来源编号"></el-table-column>
+
                     <el-table-column prop="idleNum" label="闲置数量"></el-table-column>
-                    <el-table-column prop="applications" label="申请数量"></el-table-column>
-                    <el-table-column prop="sentNum" label="待发数量"></el-table-column>
-                    <el-table-column prop="cancellationsNum" label="收货数量"></el-table-column>
-                    <el-table-column prop="state" label="状态"></el-table-column>
-                    <el-table-column prop="applicant" label="申请人"></el-table-column>
-                    <el-table-column prop="planner" label="计划员"></el-table-column>
-                    <el-table-column prop="clientName" label="客户名称"></el-table-column>
-                    <el-table-column prop="customerAddress" label="客户地址"></el-table-column>
-                    <el-table-column prop="customerContact" label="客户联系方式"></el-table-column>
-                    <el-table-column prop="applicationime" label="申请时间"></el-table-column>
-                    <el-table-column prop="updateTime" label="最后更新时间"></el-table-column>
+
+                    <el-table-column prop="applyNumCount" label="申请数量"></el-table-column>
+                    <el-table-column prop="waitNumCount" label="待发数量"></el-table-column>
+                    <el-table-column prop="confirmNumCount" label="收货数量"></el-table-column>
+                    <el-table-column prop="applyStatusText" label="状态"></el-table-column>
+                    <el-table-column prop="applyUserName" label="申请人"></el-table-column>
+                    <el-table-column prop="auditName" label="计划员"></el-table-column>
+                    <el-table-column prop="receiverName" label="客户名称"></el-table-column>
+                    <el-table-column prop="receiverAddress" label="客户地址"></el-table-column>
+                    <el-table-column prop="receiverMobile" label="客户联系方式"></el-table-column>
+                    <el-table-column prop="createdDate" label="申请时间"></el-table-column>
+                    <el-table-column prop="lastUpdatedDate" label="最后更新时间"></el-table-column>
                 </el-table>
             </el-row>
 
@@ -119,123 +121,32 @@
     </div>
 </template>
 <script>
+import { approvertransferOrderList } from '@/request/api.js';
 export default {
     name: 'ReviewList',
     data() {
         return {
             queryInfo: {
-                // 搜索值
-                query: '',
-                // 当前的页数
-                pagenum: 1,
-                // 当前每次显示多少条数据
-                pagesize: 5
+                applyCode: '', //调拨申请单号
+                auditQuery: 1, //是否审批列表- 非null -是(若传null为申请列表)
+                applyStatus: null, //调拨申请状态 0-待审核 1待发货 2审核拒绝 3待收货 4已取消 5待完成
+                applyType: '', //申请类型 0-手工新增 1-实施任务书
+                applyUserName: '', //申请人姓名
+                auditName: '', //审核人-计划员
+                createdDateEnd: '', //筛选项-申请时间尾
+                createdDateStart: '', //筛选项-申请时间起
+                fromCode: '', //来源编号
+                inOrgName: '', //调入组织名称
+                outOrgName: '', //调出组织名称
+                p: 1,
+                s: 10
             },
             total: 100,
             currentPage4: 10,
             // 查询参数对象
 
             // 商品列表
-            goodsList: [
-                {
-                    id: 'DB20211015000001',
-                    transferred: '云镖网络科技有限公司',
-                    sourceType: 'xyj店铺',
-                    sourceNum: 'DMI调拨',
-                    idleNum: 20,
-                    applications: '',
-                    sentNum: '10',
-                    cancelNum: 87,
-                    cancellationsNum: 87,
-                    state: '待收货',
-                    applicant: '张三',
-                    planner: '2021-10-15 10:35:23',
-                    applicationime: '2021-10-15 10:35:23',
-                    updateTime: '2021-10-15 10:35:23'
-                },
-                {
-                    id: 'DB20211015000001',
-                    transferred: '云镖网络科技有限公司',
-                    sourceType: 'xyj店铺',
-                    sourceNum: 'DMI调拨',
-                    idleNum: 20,
-                    applications: '',
-                    sentNum: '10',
-                    cancelNum: 87,
-                    cancellationsNum: 87,
-                    state: '待收货',
-                    applicant: '张三',
-                    planner: '2021-10-15 10:35:23',
-                    applicationime: '2021-10-15 10:35:23',
-                    updateTime: '2021-10-15 10:35:23'
-                },
-                {
-                    id: 'DB20211015000001',
-                    transferred: '云镖网络科技有限公司',
-                    sourceType: 'xyj店铺',
-                    sourceNum: 'DMI调拨',
-                    idleNum: 20,
-                    applications: '',
-                    sentNum: '10',
-                    cancelNum: 87,
-                    cancellationsNum: 87,
-                    state: '待收货',
-                    applicant: '张三',
-                    planner: '2021-10-15 10:35:23',
-                    applicationime: '2021-10-15 10:35:23',
-                    updateTime: '2021-10-15 10:35:23'
-                },
-                {
-                    id: 'DB20211015000001',
-                    transferred: '云镖网络科技有限公司',
-                    sourceType: 'xyj店铺',
-                    sourceNum: 'DMI调拨',
-                    idleNum: 20,
-                    applications: '',
-                    sentNum: '10',
-                    cancellationsNum: 87,
-                    state: '待收货',
-                    applicant: '张三',
-                    planner: '系统',
-                    clientName: '李四',
-                    customerAddress: '福田',
-                    customerContact: 18866669999,
-                    applicationime: '2021-10-15 10:35:23',
-                    updateTime: '2021-10-15 10:35:23'
-                },
-                {
-                    id: 'DB20211015000001',
-                    transferred: '云镖网络科技有限公司',
-                    sourceType: 'xyj店铺',
-                    sourceNum: 'DMI调拨',
-                    idleNum: 20,
-                    applications: '',
-                    sentNum: '10',
-                    cancelNum: 87,
-                    cancellationsNum: 87,
-                    state: '待收货',
-                    applicant: '张三',
-                    planner: '2021-10-15 10:35:23',
-                    applicationime: '2021-10-15 10:35:23',
-                    updateTime: '2021-10-15 10:35:23'
-                },
-                {
-                    id: 'DB20211015000001',
-                    transferred: '云镖网络科技有限公司',
-                    sourceType: 'xyj店铺',
-                    sourceNum: 'DMI调拨',
-                    idleNum: 20,
-                    applications: '',
-                    sentNum: '10',
-                    cancelNum: 87,
-                    cancellationsNum: 87,
-                    state: '待收货',
-                    applicant: '张三',
-                    planner: '2021-10-15 10:35:23',
-                    applicationime: '2021-10-15 10:35:23',
-                    updateTime: '2021-10-15 10:35:23'
-                }
-            ],
+            goodsList: [],
 
             // 筛选表单数据
             filterInfo: {
@@ -243,7 +154,19 @@ export default {
             }
         };
     },
+    created() {
+        this.getExamineList();
+    },
     methods: {
+        //请求调拨申请数据
+        getExamineList() {
+            approvertransferOrderList(this.queryInfo).then(res => {
+                this.goodsList = res.data.list;
+                console.log(res);
+            });
+        },
+
+        // ========================
         // 监听 pagesize 改变事件 每页显示的个数
         handleSizeChange(newSize) {
             this.queryInfo.pagesize = newSize;
@@ -254,8 +177,22 @@ export default {
         },
 
         //   跳转到审核综合调拨单详情
-        toReviewDetails(row) {
-            this.$router.push('/reviewList/reviewListDetail');
+        // toReviewDetails(row) {
+        //     this.$router.push('/reviewList/reviewListDetail');
+        // },
+        //去详情页
+        toReviewDetails(id) {
+            // console.log(id);
+            // this.$router.push({path:`/transfer/transferDetail/${id}`});
+            this.$router.push({
+                name: 'review',
+                params: {
+                    id: id
+                }
+            });
+        },
+        get() {
+            apiCheckOrganization(this.queryInfo);
         }
     }
 };
