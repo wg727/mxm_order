@@ -316,8 +316,10 @@ export default {
                     inventory: 0,
                     productId: this.test.productId
                 };
-                newValue.outOrgId = this.productList[index].searchConfig.orgId;
+                newValue.bathEnable = this.productList[0].bathEnable;
+                newValue.serialNumberEnable = this.productList[0].serialNumberEnable;
                 newValue.applyNum = this.productList[index].applyNum - parseInt(this.productList[index].auditNum);
+                this.productList[index].applyNum = parseInt(this.productList[index].auditNum);
                 this.productList[0].outOrgId = this.productList[0].searchConfig.orgId;
                 //console.log(this.productList[index].applyNum, parseInt(this.productList[index].numberApprovals));
                 //添加新的行数
@@ -404,7 +406,10 @@ export default {
                 this.$message('审批数不能大于可用数量');
             } else {
                 this.productList[0].id = this.listId;
-                this.productList[0].outOrgId = this.productList[0].searchConfig.orgId;
+                //取出对应的调出组织id赋值
+                this.productList.forEach((item, index, array) => {
+                    this.productList[index].outOrgId = this.productList[index].searchConfig.orgId; //执行代码
+                });
                 let params = {};
                 params.applyItemList = this.productList;
                 params.applyStatus = +this.switchValue;
