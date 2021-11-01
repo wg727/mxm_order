@@ -197,6 +197,7 @@ export default {
             isdisabled: false,
             // 产品明细列表数据
             id: this.$route.params.id,
+            listId: null,
             // 单据详情
             documentDetails: {
                 inOrgName: '',
@@ -378,6 +379,7 @@ export default {
                 this.assetsOrgId = res.data.assetsOrgId; //
                 this.orgId = res.data.inOrgId;
                 this.productId = res.data.applyItemVoList[0].productId;
+                this.listId = res.data.applyItemVoList[0].id;
                 console.log(this.assetsOrgId, this.orgId, this.productId);
             });
         },
@@ -401,6 +403,7 @@ export default {
             if (parseInt(this.productList[0].auditNum) > this.productList[0].searchConfig.inventory) {
                 this.$message('审批数不能大于可用数量');
             } else {
+                this.productList[0].id = this.listId;
                 this.productList[0].outOrgId = this.productList[0].searchConfig.orgId;
                 let params = {};
                 params.applyItemList = this.productList;
