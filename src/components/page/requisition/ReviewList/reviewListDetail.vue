@@ -232,6 +232,7 @@ export default {
                 searchConfig: {
                     inventory: 0
                 }
+                //outOrgId: this.productList[0].searchConfig.orgId
             },
             //调出组织选项
             options: [],
@@ -277,6 +278,7 @@ export default {
                     },
                     inventory: 0,
                     auditNum: 0
+                    //outOrgId: this.productList[0].searchConfig.orgId
                 }
             ]
         };
@@ -297,7 +299,12 @@ export default {
     },
     methods: {
         addLine(index) {
-            if (this.options.length > 1) {
+            if (this.options.length <= 1) {
+                this.$message('请先选择调出组织');
+            } else if (parseInt(this.productList[index].auditNum) > this.productList[index].searchConfig.inventory) {
+                this.$message('审批数不能大于可用数量');
+            } else if (this.productList[index].applyNum - parseInt(this.productList[index].auditNum) == 0) {
+            } else if (this.options.length > 1) {
                 //添加行数
                 var newValue = {
                     productName: this.test.productName,
@@ -314,9 +321,6 @@ export default {
                 //console.log(this.productList[index].applyNum, parseInt(this.productList[index].numberApprovals));
                 //添加新的行数
                 this.productList.push(newValue);
-            } else if (this.options.length <= 1) {
-                this.$message('请先选择调出组织');
-            } else if (this.productList[index].applyNum - parseInt(this.productList[index].auditNum) == 0) {
             }
         },
         handleDelete(index) {
@@ -394,22 +398,27 @@ export default {
             //this.searchConfig = value;
         },
         reviewTransferRequestSubmission() {
-            let params = {};
-            params.applyItemList = this.productList;
-            params.applyStatus = +this.switchValue;
-            params.auditRemark = this.textarea;
-            params.id = this.id;
-            console.log(params);
-            apiReviewTransferRequestSubmission(params).then(res => {
-                if (res.code == 200) {
-                    this.$router.push({ path: '/reviewList' });
-                }
-                if (res.code == 500) {
-                    this.$message(res.message);
-                }
-                console.log(res);
-            });
-            this.dialogFormVisible = false;
+            if (parseInt(this.productList[0].auditNum) > this.productList[0].searchConfig.inventory) {
+                this.$message('审批数不能大于可用数量');
+            } else {
+                this.productList[0].outOrgId = this.productList[0].searchConfig.orgId;
+                let params = {};
+                params.applyItemList = this.productList;
+                params.applyStatus = +this.switchValue;
+                params.auditRemark = this.textarea;
+                params.id = this.id;
+                console.log(params);
+                apiReviewTransferRequestSubmission(params).then(res => {
+                    if (res.code == 200) {
+                        this.$router.push({ path: '/reviewList' });
+                    }
+                    if (res.code == 500) {
+                        this.$message(res.message);
+                    }
+                    console.log(res);
+                });
+                this.dialogFormVisible = false;
+            }
         },
 
         //dialog
