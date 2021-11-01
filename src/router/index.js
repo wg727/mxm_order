@@ -228,6 +228,14 @@ export default new Router({
                     },
                     component: () => import ( '../components/page/order/salesreturnAddress/index.vue')
                 },
+                {
+                    path: '/test',
+                    name: 'test',
+                    meta: {
+                        title: '销售退换货地址'
+                    },
+                    component: () => import ( '../components/page/order/Test/index.vue')
+                },
                 
                 
 

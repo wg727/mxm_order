@@ -28,41 +28,31 @@
                                 <el-form-item label="订单编码:" class="filter_el-col">
                                     <el-input placeholder="输入订单编码" v-model="filterInfo.orderCode"></el-input>
                                 </el-form-item>
-                                <el-form-item label="客户名称:" class="filter_el-col">
-                                    <el-input placeholder="输入客户名称" v-model="filterInfo.customerName"></el-input>
+                                <el-form-item label="供应商:" class="filter_el-col">
+                                    <el-input placeholder="输入供应商" v-model="filterInfo.provider"></el-input>
                                 </el-form-item>
-                                <el-form-item label="客户所属区域:" class="filter_el-col">
-                                    <el-input placeholder="输入客户所属区域" v-model="filterInfo.customerRegion"></el-input>
+                                <el-form-item label="产品名称:" class="filter_el-col">
+                                    <el-input placeholder="输入产品名称" v-model="filterInfo.productName"></el-input>
                                 </el-form-item>
-                                <el-form-item label="客户所在省份:" class="filter_el-col">
-                                    <el-input placeholder="输入客户所在省份" v-model="filterInfo.customerProvince"></el-input>
+                                <el-form-item label="序列号:" class="filter_el-col">
+                                    <el-input placeholder="输入序列号" v-model="filterInfo.serialNumber"></el-input>
+                                </el-form-item>
+                                <el-form-item label="物流单号:" class="filter_el-col">
+                                    <el-input placeholder="输入物流单号" v-model="filterInfo.logisticBillNumber"></el-input>
                                 </el-form-item>
 
-                                <el-form-item label="产品类别:" class="filter_el-col">
+                                <el-form-item label="钉钉审批状态:" class="filter_el-col">
                                     <el-select
-                                        v-model="filterInfo.productCategory"
+                                        v-model="filterInfo.DDapprovalStatus"
                                         placeholder="全部"
                                         style="width:100%"
                                         :popper-append-to-body="false"
                                     >
                                         <el-option label="全部" value="shanghai"></el-option>
-                                        <el-option label="机器人" value="beijing"></el-option>
-                                        <el-option label="其他" value="beijing"></el-option>
+                                        <el-option label="启用" value="beijing"></el-option>
                                     </el-select>
                                 </el-form-item>
-                                <el-form-item label="订单来源:" class="filter_el-col">
-                                    <el-select
-                                        v-model="filterInfo.transOrganiza"
-                                        placeholder="全部"
-                                        style="width:100%"
-                                        :popper-append-to-body="false"
-                                    >
-                                        <el-option label="全部" value="shanghai"></el-option>
-                                        <el-option label="科卫云" value="beijing"></el-option>
-                                        <el-option label="好萝卜" value="beijing"></el-option>
-                                    </el-select>
-                                </el-form-item>
-                                <el-form-item label="申请时间：" class="filter_el-col"
+                                <el-form-item label="下单时间：" class="filter_el-col"
                                     ><br />
                                     <el-col :span="11">
                                         <el-date-picker
@@ -93,40 +83,12 @@
                                         style="width:100%"
                                         :popper-append-to-body="false"
                                     >
-                                        <el-option label="全部" value="shanghai"></el-option>
-                                        <el-option label="待审核" value="beijing"></el-option>
-                                        <el-option label="待发货" value="beijing"></el-option>
-                                        <el-option label="审核拒绝" value="beijing"></el-option>
+                                        <el-option label="全部订单" value="shanghai"></el-option>
+                                        <el-option label="待供应商审核" value="beijing"></el-option>
+                                        <el-option label="待供应商发货" value="beijing"></el-option>
                                         <el-option label="待收货" value="beijing"></el-option>
-                                        <el-option label="已取消" value="beijing"></el-option>
                                         <el-option label="已完成" value="beijing"></el-option>
-                                    </el-select>
-                                </el-form-item>
-                                <el-form-item label="收款状态:" class="filter_el-col">
-                                    <el-select
-                                        v-model="filterInfo.collectionStatus"
-                                        placeholder="全部"
-                                        style="width:100%"
-                                        :popper-append-to-body="false"
-                                    >
-                                        <el-option label="全部" value="shanghai"></el-option>
-                                        <el-option label="待客户付款" value="beijing"></el-option>
-                                        <el-option label="待确认收款" value="beijing"></el-option>
-                                        <el-option label="部分收款" value="beijing"></el-option>
-                                        <el-option label="收款完成" value="beijing"></el-option>
-                                        <el-option label="无需收款" value="beijing"></el-option>
-                                    </el-select>
-                                </el-form-item>
-                                <el-form-item label="组织类型:" class="filter_el-col">
-                                    <el-select
-                                        v-model="filterInfo.organizationType"
-                                        placeholder="全部"
-                                        style="width:100%"
-                                        :popper-append-to-body="false"
-                                    >
-                                        <el-option label="全部" value="shanghai"></el-option>
-                                        <el-option label="子公司" value="beijing"></el-option>
-                                        <el-option label="代理商" value="beijing"></el-option>
+                                        <el-option label="关闭交易" value="beijing"></el-option>
                                     </el-select>
                                 </el-form-item>
 
@@ -294,18 +256,16 @@ export default {
             // 筛选表单数据
             filterInfo: {
                 orderCode: '',
-                customerName: '',
-                customerRegion: '',
-                customerProvince: '',
-                productCategory: '',
-                orderSource: '',
+                provider: '',
+                productName: '',
+                serialNumber: '',
+                logisticBillNumber: '',
+                DDapprovalStatus: '',
                 orderTime: {
                     startTime: '',
                     endTime: ''
                 },
-                orderStatus: '',
-                collectionStatus: '',
-                organizationType: ''
+                orderStatus: ''
             }
         };
     },

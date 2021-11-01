@@ -6,12 +6,12 @@ import { Message } from 'element-ui';
 // 叶浪云   10.0.4.84
 // 张文星   10.0.32.240
 if (process.env.NODE_ENV == 'development') {    
-    axios.defaults.baseURL = 'http://10.0.32.240:8089/';} 
+    axios.defaults.baseURL = 'http://10.0.4.84:8089/';} 
 else if (process.env.NODE_ENV == 'debug') {    
-    axios.defaults.baseURL = 'http://10.0.32.240:8089/';
+    axios.defaults.baseURL = 'http://10.0.4.84:8089/';
 } 
 else if (process.env.NODE_ENV == 'production') {    
-    axios.defaults.baseURL = 'http://10.0.32.240:8089/';
+    axios.defaults.baseURL = 'http://10.0.4.84:8089/';
 }
 
 axios.defaults.timeout = 10000; //超时时间

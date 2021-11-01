@@ -47,30 +47,6 @@
                                         <el-option label="好萝卜" value="beijing"></el-option>
                                     </el-select>
                                 </el-form-item>
-                                <el-form-item label="申请时间：" class="filter_el-col"
-                                    ><br />
-                                    <el-col :span="11">
-                                        <el-date-picker
-                                            type="date"
-                                            placeholder="选择日期"
-                                            v-model="filterInfo.orderTime.startTime"
-                                            style="width: 100%;"
-                                            :popper-append-to-body="false"
-                                            value-format="yyyy-MM-dd HH:mm:ss"
-                                        ></el-date-picker>
-                                    </el-col>
-
-                                    <el-col :span="11" class="el_col_seletime" :popper-append-to-body="false">
-                                        <el-date-picker
-                                            type="date"
-                                            placeholder="选择日期"
-                                            v-model="filterInfo.orderTime.endTime"
-                                            style="width: 100%;"
-                                            :popper-append-to-body="false"
-                                            value-format="yyyy-MM-dd HH:mm:ss"
-                                        ></el-date-picker>
-                                    </el-col>
-                                </el-form-item>
                                 <el-form-item label="订单状态:" class="filter_el-col">
                                     <el-select
                                         v-model="filterInfo.orderStatus"
@@ -87,9 +63,9 @@
                                         <el-option label="已完成" value="beijing"></el-option>
                                     </el-select>
                                 </el-form-item>
-                                <el-form-item label="收款状态:" class="filter_el-col">
+                                <el-form-item label="付款状态:" class="filter_el-col">
                                     <el-select
-                                        v-model="filterInfo.collectionStatus"
+                                        v-model="filterInfo.paymentStatus"
                                         placeholder="全部"
                                         style="width:100%"
                                         :popper-append-to-body="false"
@@ -99,7 +75,6 @@
                                         <el-option label="待确认收款" value="beijing"></el-option>
                                         <el-option label="部分收款" value="beijing"></el-option>
                                         <el-option label="收款完成" value="beijing"></el-option>
-                                        <el-option label="无需收款" value="beijing"></el-option>
                                     </el-select>
                                 </el-form-item>
                                 <el-form-item label="组织类型:" class="filter_el-col">
@@ -290,7 +265,7 @@ export default {
                     endTime: ''
                 },
                 orderStatus: '',
-                collectionStatus: '',
+                paymentStatus: '',
                 organizationType: ''
             }
         };

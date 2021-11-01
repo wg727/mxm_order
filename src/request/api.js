@@ -10,7 +10,7 @@ export const apiCheckOrganization = p => post('neworder/other/api/order/getDcSys
 export const apiConsigneeInformation = p => post('neworder/other/api/order/getGoods', p);
 
 //调出组织产品 
-export const apiCallOutOrganizationalProducts = p => post('neworder/other/api/order/getGoods', p);
+export const apiCallOutOrganizationalProducts = p => post('/neworder/other/api/order/getProductType', p);
 
 //
 //调拨申请列表-分页
@@ -34,3 +34,12 @@ export const productList = p => post('neworder/api/v1/allocate/statistics', p);
 // ===============================================================================
 //审核调拨单列表
 export const approvertransferOrderList = p => post('neworder/api/v1/allocate/list', p);
+
+//审核调出产品组织
+export const transferOutProductOrganization = p => post('neworder/other/api/order/getDispatchOrg', p);
+
+//查询组织库存
+export const checkOrganizationalInventory = p => post('neworder/api/v1/allocate/getOrgInventory', p);
+
+//审核调拨申请提交
+export const apiReviewTransferRequestSubmission = p => post('neworder/api/v1/allocate/audit', p);

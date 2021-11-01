@@ -125,6 +125,10 @@ export default {
                         {
                             index: '/salesreturnAddress',
                             title: '销售退换货地址'
+                        },
+                        {
+                            index: '/test',
+                            title: '测试'
                         }
                     ]
                 }

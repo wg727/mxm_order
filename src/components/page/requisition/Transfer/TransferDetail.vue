@@ -18,10 +18,10 @@
                         <span>资产所属组织</span>
                     </div>
                     <div class="section_list">
-                        <span>{{documentDetails.inOrgName}}</span>
-                        <span>{{documentDetails.applyCode}}</span>
-                        <span>{{documentDetails.applyUserName}}</span>
-                        <span>{{documentDetails.assetsOrgName}}</span>
+                        <span>{{ documentDetails.inOrgName }}</span>
+                        <span>{{ documentDetails.applyCode }}</span>
+                        <span>{{ documentDetails.applyUserName }}</span>
+                        <span>{{ documentDetails.assetsOrgName }}</span>
                     </div>
                 </section>
 
@@ -32,9 +32,9 @@
                         <span>领资料类型</span>
                     </div>
                     <div class="section_list">
-                        <span>{{documentDetails.applyStatusText}}</span>
-                        <span>{{documentDetails.remark}}</span>
-                        <span>{{documentDetails.applyType}}</span>
+                        <span>{{ documentDetails.applyStatusText }}</span>
+                        <span>{{ documentDetails.remark }}</span>
+                        <span>{{ documentDetails.applyType }}</span>
                     </div>
                 </section>
 
@@ -45,9 +45,9 @@
                         <span>申请项目</span>
                     </div>
                     <div class="section_list">
-                        <span>{{documentDetails.auditName}}</span>
-                        <span>{{documentDetails.auditRemark}}</span>
-                        <span>{{documentDetails.applyTypeText}}</span>
+                        <span>{{ documentDetails.auditName }}</span>
+                        <span>{{ documentDetails.auditRemark }}</span>
+                        <span>{{ documentDetails.applyTypeText }}</span>
                     </div>
                 </section>
 
@@ -58,9 +58,9 @@
                         <span>项目地址</span>
                     </div>
                     <div class="section_list">
-                        <span>{{documentDetails.createdDate}}</span>
-                        <span>{{documentDetails.lastUpdatedDate}}</span>
-                        <span>{{documentDetails.receiverAddress}}</span>
+                        <span>{{ documentDetails.createdDate }}</span>
+                        <span>{{ documentDetails.lastUpdatedDate }}</span>
+                        <span>{{ documentDetails.receiverAddress }}</span>
                     </div>
                 </section>
             </div>
@@ -290,20 +290,20 @@ export default {
 
             // 单据详情
             documentDetails: {
-							inOrgName:'',
-							applyCode:'',
-							applyUserName:'',
-							assetsOrgName:'',
-							applyStatusText:'',
-							remark:'',
-							applyType:'',
-							auditName:'',
-							auditRemark:'',
-							applyTypeText:'',
-							createdDate:'',
-							lastUpdatedDate:'',
-							receiverAddress:'',
-						},
+                inOrgName: '',
+                applyCode: '',
+                applyUserName: '',
+                assetsOrgName: '',
+                applyStatusText: '',
+                remark: '',
+                applyType: '',
+                auditName: '',
+                auditRemark: '',
+                applyTypeText: '',
+                createdDate: '',
+                lastUpdatedDate: '',
+                receiverAddress: ''
+            },
             // 发货申请
             shipmentApplica: [
                 {
@@ -384,20 +384,20 @@ export default {
         getTransferDetails() {
             let params = { id: this.id };
             transferApplicationDetails(params).then(res => {
-							console.log(res);
-							this.documentDetails.inOrgName=res.data.inOrgName; //调入组织
-							this.documentDetails.applyCode=res.data.applyCode; //单据号
-							this.documentDetails.applyUserName=res.data.applyUserName;//申请人
-							this.documentDetails.assetsOrgName=res.data.assetsOrgName;//资产所属组织
-							this.documentDetails.applyStatusText=res.data.applyStatusText;//状态
-							this.documentDetails.remark=res.data.remark;//申请备注
-							this.documentDetails.applyType=res.data.applyType;//领资料类型
-							this.documentDetails.auditName=res.data.auditName;//计划员
-							this.documentDetails.auditRemark=res.data.auditRemark;//审批备注
-							this.documentDetails.applyTypeText=res.data.applyTypeText;//申请项目
-							this.documentDetails.createdDate=res.data.createdDate;//申请时间
-							this.documentDetails.lastUpdatedDate=res.data.lastUpdatedDate;//最后更新
-							this.documentDetails.receiverAddress=res.data.receiverAddress;//项目地址
+                console.log(res);
+                this.documentDetails.inOrgName = res.data.inOrgName; //调入组织
+                this.documentDetails.applyCode = res.data.applyCode; //单据号
+                this.documentDetails.applyUserName = res.data.applyUserName; //申请人
+                this.documentDetails.assetsOrgName = res.data.assetsOrgName; //资产所属组织
+                this.documentDetails.applyStatusText = res.data.applyStatusText; //状态
+                this.documentDetails.remark = res.data.remark; //申请备注
+                this.documentDetails.applyType = res.data.applyType; //领资料类型
+                this.documentDetails.auditName = res.data.auditName; //计划员
+                this.documentDetails.auditRemark = res.data.auditRemark; //审批备注
+                this.documentDetails.applyTypeText = res.data.applyTypeText; //申请项目
+                this.documentDetails.createdDate = res.data.createdDate; //申请时间
+                this.documentDetails.lastUpdatedDate = res.data.lastUpdatedDate; //最后更新
+                this.documentDetails.receiverAddress = res.data.receiverAddress; //项目地址
             });
         },
 

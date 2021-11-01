@@ -82,7 +82,7 @@
                     <el-table-column prop="applyCode" label="单据号">
                         <template v-slot="scope">
                             <div>
-                                <a href="javascript:;" @click="toReviewDetails">{{ scope.row.id }}</a>
+                                <a href="javascript:;" @click="toReviewDetails(scope.row.id)">{{ scope.row.applyCode }}</a>
                             </div>
                         </template>
                     </el-table-column>
@@ -127,7 +127,19 @@ export default {
     data() {
         return {
             queryInfo: {
-                auditQuery:1
+                applyCode: '', //调拨申请单号
+                auditQuery: 1, //是否审批列表- 非null -是(若传null为申请列表)
+                applyStatus: null, //调拨申请状态 0-待审核 1待发货 2审核拒绝 3待收货 4已取消 5待完成
+                applyType: '', //申请类型 0-手工新增 1-实施任务书
+                applyUserName: '', //申请人姓名
+                auditName: '', //审核人-计划员
+                createdDateEnd: '', //筛选项-申请时间尾
+                createdDateStart: '', //筛选项-申请时间起
+                fromCode: '', //来源编号
+                inOrgName: '', //调入组织名称
+                outOrgName: '', //调出组织名称
+                p: 1,
+                s: 10
             },
             total: 100,
             currentPage4: 10,
@@ -142,8 +154,8 @@ export default {
             }
         };
     },
-    created(){
-        this.getExamineList()
+    created() {
+        this.getExamineList();
     },
     methods: {
         //请求调拨申请数据
@@ -165,8 +177,19 @@ export default {
         },
 
         //   跳转到审核综合调拨单详情
-        toReviewDetails(row) {
-            this.$router.push('/reviewList/reviewListDetail');
+        // toReviewDetails(row) {
+        //     this.$router.push('/reviewList/reviewListDetail');
+        // },
+        //去详情页
+        toReviewDetails(id) {
+            // console.log(id);
+            // this.$router.push({path:`/transfer/transferDetail/${id}`});
+            this.$router.push({
+                name: 'review',
+                params: {
+                    id: id
+                }
+            });
         },
         get() {
             apiCheckOrganization(this.queryInfo);
