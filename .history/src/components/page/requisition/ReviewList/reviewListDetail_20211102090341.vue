@@ -78,12 +78,12 @@
                     <div class="section_list first">
                         <span>申请时间：</span>
                         <span>最后更新：</span>
-                        <span v-if="documentDetails.projectAddress !== '' || null || undefined">项目地址：</span>
+                        <span v-if="documentDetails.receiverAddress !== '' || null || undefined">项目地址：</span>
                     </div>
                     <div class="section_list">
                         <span>{{ documentDetails.createdDate }}</span>
                         <span>{{ documentDetails.lastUpdatedDate }}</span>
-                        <span v-if="documentDetails.projectAddress !== '' || null || undefined">{{ documentDetails.projectAddress }}</span>
+                        <span v-if="documentDetails.receiverAddress !== '' || null || undefined">{{ documentDetails.receiverAddress }}</span>
                     </div>
                 </section>
             </div>
@@ -215,7 +215,7 @@ export default {
                 applyTypeText: '',
                 createdDate: '',
                 lastUpdatedDate: '',
-                projectAddress: ''
+                receiverAddress: ''
             },
             assetsOrgId: null,
             orgId: null,
@@ -367,7 +367,7 @@ export default {
                 this.documentDetails.applyTypeText = res.data.applyTypeText; //申请项目
                 this.documentDetails.createdDate = res.data.createdDate; //申请时间
                 this.documentDetails.lastUpdatedDate = res.data.lastUpdatedDate; //最后更新
-                this.documentDetails.projectAddress = res.data.projectAddress; //项目地址
+                this.documentDetails.receiverAddress = res.data.receiverAddress; //项目地址
 
                 this.test.productName = res.data.applyItemVoList[0].productName;
                 this.test.unitText = res.data.applyItemVoList[0].unitText;
